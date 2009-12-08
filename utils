@@ -1,0 +1,9 @@
+# Number of simultaneous threads we use for make. This should be
+# number_of_processors + 1, though on some systems where performance
+# isn't a big issue I won't tune it.
+NUMTHREADS=3
+alias mj="make -j$NUMTHREADS"
+function pg {
+	cd ~/projects/$1 && PS1='<$1> "
+}
+
