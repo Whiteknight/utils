@@ -4,3 +4,22 @@ function parrot-uninstall {
 	sudo rm -rfv /usr/src/parrot*
 	sudo rm -rfv /usr/include/parrot*
 }
+
+if which ccache > /dev/null; then
+	PARROTUSECCACHE="--cc='ccache gcc'"
+else
+	PARROTUSECCACHE=""
+fi
+
+if which flex > /dev/null && which bison > /dev/null; then
+	PARROTMAINTAINER="--maintainer"
+else
+	PARROTMAINTAINER=""
+fi
+
+alias pc="perl Configure.pl $PARROTUSECCACHE $PARROTMAINTAINER"
+alias pc-o="pc --optimize"
+
+# I find 5 is a pretty optimum number, don't need to use NUMTHREADS.
+alias pt="mj TEST_JOBS=5"
+
