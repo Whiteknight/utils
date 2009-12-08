@@ -3,6 +3,10 @@
 # isn't a big issue I won't tune it.
 NUMTHREADS=3
 alias mj="make -j$NUMTHREADS"
+function e {
+	#kate -u $* &
+	medit $* &
+}
 function pg {
 	cd ~/projects/$1 && PS1="\n<$1> " && pwd
 }
