@@ -4,6 +4,7 @@
 NUMTHREADS=3
 alias mj="make -j$NUMTHREADS"
 function pg {
-	cd ~/projects/$1 && PS1='<$1> "
+	cd ~/projects/$1 && PS1="\n<$1> " && pwd
 }
+alias projects="cd ~/projects && PS1='\n<projects> ' && ls --color=always"
 
