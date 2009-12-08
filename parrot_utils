@@ -1,8 +1,10 @@
 function parrot-uninstall {
-	sudo rm -rfv /usr/bin/parrot* /usr/bin/pbc*
-	sudo rm -rfv /usr/lib/parrot* /usr/lib/libparrot* 
-	sudo rm -rfv /usr/src/parrot*
-	sudo rm -rfv /usr/include/parrot*
+	sudo rm -rfv /usr/local/bin/parrot* 
+	sudo rm -rfv /usr/local/bin/pbc*
+	sudo rm -rfv /usr/local/lib/parrot* 
+	sudo rm -rfv /usr/local/lib/libparrot* 
+	sudo rm -rfv /usr/local/src/parrot*
+	sudo rm -rfv /usr/local/include/parrot*
 }
 
 if which ccache > /dev/null; then
@@ -19,7 +21,7 @@ fi
 
 alias pc="perl Configure.pl $PARROTUSECCACHE $PARROTMAINTAINER"
 alias pc-o="pc --optimize"
-alias pcn = "parrot-nqp Configure.nqp"
+alias pcn="parrot-nqp Configure.nqp"
 
 # I find 5 is a pretty optimum number, don't need to use NUMTHREADS.
 alias pt="mj TEST_JOBS=5"
