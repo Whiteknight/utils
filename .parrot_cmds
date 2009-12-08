@@ -1,0 +1,6 @@
+function parrot-uninstall {
+	sudo rm -rfv /usr/bin/parrot* /usr/bin/pbc*
+	sudo rm -rfv /usr/lib/parrot* /usr/lib/libparrot* 
+	sudo rm -rfv /usr/src/parrot*
+	sudo rm -rfv /usr/include/parrot*
+}
