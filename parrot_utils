@@ -19,6 +19,7 @@ fi
 
 alias pc="perl Configure.pl $PARROTUSECCACHE $PARROTMAINTAINER"
 alias pc-o="pc --optimize"
+alias pcn = "parrot-nqp Configure.nqp"
 
 # I find 5 is a pretty optimum number, don't need to use NUMTHREADS.
 alias pt="mj TEST_JOBS=5"
