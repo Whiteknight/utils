@@ -2,13 +2,36 @@
 # number_of_processors + 1, though on some systems where performance
 # isn't a big issue I won't tune it.
 NUMTHREADS=3
-alias mj="make -j$NUMTHREADS"
-function e {
-	#kate -u $* &
-	medit $* &
-}
-function pg {
-	cd ~/projects/$1 && PS1="\n<$1> " && pwd
-}
-alias projects="cd ~/projects && PS1='\n<projects> ' && ls --color=always"
 
+alias mj="make -j$NUMTHREADS"
+alias projects="cd ~/projects && PS1='\n<projects> ' && ls --color=always"
+alias ll="ls -l"
+alias la="ls -a"
+
+function e {
+    #kate -u $* &
+    medit $* &
+}
+
+function __update_version {
+    PGVERSION=$(perl ~/projects/utils/get_version.pl)
+    PS1="\n<$PGPROJECT $PGVERSION> "
+}
+
+function pg {
+    PGPROJECT=$1
+    cd ~/projects/$1 && __update_version
+    pwd
+}
+
+function up {
+    if [ -e ".svn" ]; then
+        svn update
+        __update_version
+        return
+    fi
+    if [ -e ".git" ]; then
+        git pull
+        return
+    fi
+}
