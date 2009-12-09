@@ -8,9 +8,35 @@ alias projects="cd ~/projects && PS1='\n<projects> ' && ls --color=always"
 alias ll="ls -l"
 alias la="ls -a"
 
+# At the moment I really only use three basic types of systems:
+# Fedora-based, Debian-based, and Solaris-based. I will add more options
+# if I need them.
+if which apt-get 2&>1 > /dev/null; then
+    alias get="apt-get install"
+    DISTROTYPE="Debian"
+else
+    if which yum 2&>1 > /dev/null; then
+        alias get="yum install"
+        DISTROTYPE="Fedora"
+    else
+        if which pkg > /dev/null; then
+            alias get="pkg install"
+            DISTROTYPE="Solaris"
+        fi
+    fi
+fi
+
 function e {
     #kate -u $* &
-    medit $* &
+    # All the platforms I use have Gnome, so gedit is always available.
+    # Use medit if we have it (a slightly better alternative, I think)
+    # fall back to gedit otherwise.
+    if which medit > /dev/null; then
+        medit $* &
+    else
+        # use gedit as a last resort
+        gedit $* &
+    fi
 }
 
 function __update_version {
@@ -35,3 +61,5 @@ function up {
         return
     fi
 }
+
+
