@@ -11,15 +11,15 @@ alias la="ls -a"
 # At the moment I really only use three basic types of systems:
 # Fedora-based, Debian-based, and Solaris-based. I will add more options
 # if I need them.
-if which apt-get 2&>1 > /dev/null; then
+if which apt-get &> /dev/null; then
     alias get="apt-get install"
     DISTROTYPE="Debian"
 else
-    if which yum 2&>1 > /dev/null; then
+    if which yum &> /dev/null; then
         alias get="yum install"
         DISTROTYPE="Fedora"
     else
-        if which pkg > /dev/null; then
+        if which pkg &> /dev/null; then
             alias get="pkg install"
             DISTROTYPE="Solaris"
         fi
@@ -31,7 +31,7 @@ function e {
     # All the platforms I use have Gnome, so gedit is always available.
     # Use medit if we have it (a slightly better alternative, I think)
     # fall back to gedit otherwise.
-    if which medit 2&>1 > /dev/null; then
+    if which medit &> /dev/null; then
         medit $* &
     else
         # use gedit as a last resort
