@@ -31,7 +31,7 @@ function e {
     # All the platforms I use have Gnome, so gedit is always available.
     # Use medit if we have it (a slightly better alternative, I think)
     # fall back to gedit otherwise.
-    if which medit > /dev/null; then
+    if which medit 2&>1 > /dev/null; then
         medit $* &
     else
         # use gedit as a last resort
