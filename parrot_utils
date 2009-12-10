@@ -7,13 +7,13 @@ function parrot-uninstall {
 	sudo rm -rfv /usr/local/include/parrot*
 }
 
-if which ccache > /dev/null; then
+if which ccache &> /dev/null; then
 	PARROTUSECCACHE="--cc='ccache gcc'"
 else
 	PARROTUSECCACHE=""
 fi
 
-if which flex > /dev/null && which bison > /dev/null; then
+if which flex &> /dev/null && which bison > /dev/null; then
 	PARROTMAINTAINER="--maintainer"
 else
 	PARROTMAINTAINER=""
