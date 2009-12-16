@@ -1,26 +1,20 @@
 function parrot-uninstall {
-	sudo rm -rfv /usr/local/bin/parrot* 
-	sudo rm -rfv /usr/local/bin/pbc*
-	sudo rm -rfv /usr/local/lib/parrot* 
-	sudo rm -rfv /usr/local/lib/libparrot* 
-	sudo rm -rfv /usr/local/src/parrot*
-	sudo rm -rfv /usr/local/include/parrot*
+    sudo rm -rfv /usr/local/bin/parrot*
+    sudo rm -rfv /usr/local/bin/pbc*
+    sudo rm -rfv /usr/local/lib/parrot*
+    sudo rm -rfv /usr/local/lib/libparrot*
+    sudo rm -rfv /usr/local/src/parrot*
+    sudo rm -rfv /usr/local/include/parrot*
 }
 
-if which ccache &> /dev/null; then
-	PARROTUSECCACHE="--cc='ccache gcc'"
-else
-	PARROTUSECCACHE=""
-fi
+WKPARROTUSECCACHE=""
+which ccache &> /dev/null && WKPARROTUSECCACHE="--cc='ccache gcc'"
 
-if which flex &> /dev/null && which bison > /dev/null; then
-	PARROTMAINTAINER="--maintainer"
-else
-	PARROTMAINTAINER=""
-fi
+WKPARROTMAINTAINER=""
+which flex &> /dev/null && which bison &> /dev/null && WKPARROTMAINTAINER="--maintainer"
 
 alias pc="perl Configure.pl $PARROTUSECCACHE $PARROTMAINTAINER"
-alias pc-o="pc --optimize"
+alias pc++="perl Configure.pl $PARROTMAINTAINER --cc=g++ --cxx=g++ --link=g++"
 alias pcn="parrot-nqp Configure.nqp"
 
 # I find 5 is a pretty optimum number, don't need to use NUMTHREADS.

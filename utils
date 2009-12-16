@@ -1,52 +1,59 @@
+# Add these lines to your ~/.bashrc and maybe your /root/.bashrc files:
+#
+#     WKPROJECTS=<your projects directory here>
+#     . $WKPROJECTS/utils/utils
+#     . $WKPROJECTS/utils/parrot_utils
+#
+# If you don't set WKPROJECTS, it will default to "/home/andrew/projects"
+WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
+
 # Number of simultaneous threads we use for make. This should be
 # number_of_processors + 1, though on some systems where performance
 # isn't a big issue I won't tune it.
-NUMTHREADS=3
+WKNUMTHREADS=3
 
-alias mj="make -j$NUMTHREADS"
-alias projects="cd ~/projects && PS1='\n<projects> ' && ls --color=always"
+alias mj="make -j$WKNUMTHREADS"
+alias projects="cd $WKPROJECTS && PS1='\n<projects> ' && ls --color=always"
 alias ll="ls -l"
 alias la="ls -a"
 
 # At the moment I really only use three basic types of systems:
 # Fedora-based, Debian-based, and Solaris-based. I will add more options
-# if I need them.
+# if I need them. Can I guarantee that we won't have a system with apt-get,
+# yum, and pkg on them simultaneously?
 if which apt-get &> /dev/null; then
     alias get="apt-get install"
-    DISTROTYPE="Debian"
+    WKDISTROTYPE="Debian"
 else
     if which yum &> /dev/null; then
         alias get="yum install"
-        DISTROTYPE="Fedora"
+        WKDISTROTYPE="Fedora"
     else
         if which pkg &> /dev/null; then
             alias get="pkg install"
-            DISTROTYPE="Solaris"
+            WKDISTROTYPE="Solaris"
         fi
     fi
 fi
+WKDISTROTYPE=${WKDISTROTYPE:-"None"}
 
 function e {
     #kate -u $* &
     # All the platforms I use have Gnome, so gedit is always available.
     # Use medit if we have it (a slightly better alternative, I think)
     # fall back to gedit otherwise.
-    if which medit &> /dev/null; then
-        medit $* &
-    else
-        # use gedit as a last resort
-        gedit $* &
-    fi
+    which medit &> /dev/null && medit $* || gedit $* &
 }
 
 function __update_version {
-    PGVERSION=$(perl ~/projects/utils/get_version.pl)
-    PS1="\n<$PGPROJECT $PGVERSION> "
+    WKPGVERSION=$(perl $WKPROJECTS/utils/get_version.pl)
+    WKPGPROJECT=${WKPGPROJECT:-$(pwd)}
+    PS1="\n<$WKPGPROJECT $WKPGVERSION> "
 }
 
 function pg {
-    PGPROJECT=$1
-    cd ~/projects/$1 && __update_version
+    WKPGPROJECT=$1
+    cd $WKPROJECTS/$1 && __update_version
     pwd
 }
 
