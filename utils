@@ -17,33 +17,38 @@ alias projects="cd $WKPROJECTS && PS1='\n<projects> ' && ls --color=always"
 alias ll="ls -l"
 alias la="ls -a"
 
-# At the moment I really only use three basic types of systems:
-# Fedora-based, Debian-based, and Solaris-based. I will add more options
-# if I need them. Can I guarantee that we won't have a system with apt-get,
-# yum, and pkg on them simultaneously?
-if which apt-get &> /dev/null; then
-    alias get="apt-get install"
-    WKDISTROTYPE="Debian"
-else
-    if which yum &> /dev/null; then
-        alias get="yum install"
-        WKDISTROTYPE="Fedora"
-    else
-        if which pkg &> /dev/null; then
-            alias get="pkg install"
-            WKDISTROTYPE="Solaris"
-        fi
-    fi
-fi
-WKDISTROTYPE=${WKDISTROTYPE:-"None"}
+# Pick an editor to launch when I lazily type "e". Start with preferences
+WKEDITORLIST=( medit kwrite gedit )
+WKEDITORLISTCNT=${#WKEDITORLIST[@]}
+WKIVAR=0
+WKEINTERNAL="echo 'no editors found'"
+while [ "$WKIVAR" -lt "$WKEDITORLISTCNT" ];
+do
+    which ${WKEDITORLIST[WKIVAR]} &> /dev/null && WKEINTERNAL=${WKEDITORLIST[WKIVAR]}
+    ((WKIVAR++))
+done
+alias e=$WKEINTERNAL
 
-function e {
-    #kate -u $* &
-    # All the platforms I use have Gnome, so gedit is always available.
-    # Use medit if we have it (a slightly better alternative, I think)
-    # fall back to gedit otherwise.
-    which medit &> /dev/null && medit $* || gedit $* &
-}
+# Figure out what the package manager on this system is. Also, we'll use this
+# to make sweeping generalizations about the distro we're using
+WKPKGMANAGERLIST=( apt-get yum pkg zypper )
+WKDISTROLIST=( Debian Fedora Solaris SuSE )
+WKPKGMANAGERLISTCNT=${#WKPKGMANAGERLIST[@]}
+WKIVAR=0
+WKGETINTERNAL="echo 'no package managers found'"
+while [ "$WKIVAR" -lt "$WKPKGMANAGERLISTCNT" ]
+do
+    if which ${WKPKGMANAGERLIST[WKIVAR]} &> /dev/null; then
+        WKGETINTERNAL=${WKPKGMANAGERLIST[WKIVAR]}
+        WKDISTROTYPE=${WKDISTROLIST[WKIVAR]}
+    fi
+    ((WKIVAR++))
+done
+alias getpkg="sudo $WKGETINTERNAL install"
+WKDISTROTYPE=${WKDISTROTYPE:-"Unknown"}
+
+# Display some basic information in a header on console startup
+echo "system: $WKDISTROTYPE - editor: $WKEINTERNAL - packager: $WKGETINTERNAL"
 
 function __update_version {
     WKPGVERSION=$(perl $WKPROJECTS/utils/get_version.pl)
