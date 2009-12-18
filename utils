@@ -7,10 +7,25 @@
 # If you don't set WKPROJECTS, it will default to "/home/andrew/projects"
 WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
 
+# Figure out if we are being run virtually inside VirtualBox and, if so,
+# whether we have the guest additions installed.
+WKVIRTUALHOST="System"
+WKVIRTUALADDITIONS=""
+lspci | (grep "VirtualBox" &> /dev/null)
+if [ "$?" -eq "0" ]; then
+    WKVIRTUALHOST="VirtualBox"
+    if which VBoxClient &> /dev/null; then
+        WKVIRTUALADDITIONS=""
+    else
+        WKVIRTUALADDITIONS=" NO GUEST ADDITIONS "
+    fi
+fi
+
 # Number of simultaneous threads we use for make. This should be
-# number_of_processors + 1, though on some systems where performance
-# isn't a big issue I won't tune it.
+# number_of_processors + 1. In a virtual environment where we are resource
+# constrained, only use one.
 WKNUMTHREADS=3
+[ "$WKVIRTUALHOST" == "VirtualBox" ] && WKNUMTHREADS=1
 
 alias mj="make -j$WKNUMTHREADS"
 alias projects="cd $WKPROJECTS && PS1='\n<projects> ' && ls --color=always"
@@ -27,7 +42,7 @@ do
     which ${WKEDITORLIST[WKIVAR]} &> /dev/null && WKEINTERNAL=${WKEDITORLIST[WKIVAR]}
     ((WKIVAR++))
 done
-alias e=$WKEINTERNAL
+function e { $WKEINTERNAL $* & }
 
 # Figure out what the package manager on this system is. Also, we'll use this
 # to make sweeping generalizations about the distro we're using
@@ -48,7 +63,7 @@ alias getpkg="sudo $WKGETINTERNAL install"
 WKDISTROTYPE=${WKDISTROTYPE:-"Unknown"}
 
 # Display some basic information in a header on console startup
-echo "system: $WKDISTROTYPE - editor: $WKEINTERNAL - packager: $WKGETINTERNAL"
+echo "$WKVIRTUALHOST$WKVIRTUALADDITIONS: $WKDISTROTYPE - editor: $WKEINTERNAL - packager: $WKGETINTERNAL"
 
 function __update_version {
     WKPGVERSION=$(perl $WKPROJECTS/utils/get_version.pl)
