@@ -18,7 +18,7 @@ alias ll="ls -l"
 alias la="ls -a"
 
 # Pick an editor to launch when I lazily type "e". Start with preferences
-WKEDITORLIST=( medit kwrite gedit )
+WKEDITORLIST=( gedit kwrite medit )
 WKEDITORLISTCNT=${#WKEDITORLIST[@]}
 WKIVAR=0
 WKEINTERNAL="echo 'no editors found'"
