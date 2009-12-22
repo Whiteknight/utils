@@ -7,17 +7,29 @@
 # If you don't set WKPROJECTS, it will default to "/home/andrew/projects"
 WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
 
+# OpenSolaris doesn't have lspci, scanpci does the same thing, but requires
+# sudo, which I don't want to use for startup scripts like this. So, need to
+# find an alternate way to do this.
+WKLSPCI="lspci"
+if ! which lspci &> /dev/null; then
+    WKLSPCI="scanpci"
+fi
+
 # Figure out if we are being run virtually inside VirtualBox and, if so,
-# whether we have the guest additions installed.
+# whether we have the guest additions installed. Note that in OpenSolaris
+# I can't really detect this now, so I pretend we aren't virtualized no matter
+# what the reality is.
 WKVIRTUALHOST="System"
 WKVIRTUALADDITIONS=""
-lspci | (grep "VirtualBox" &> /dev/null)
-if [ "$?" -eq "0" ]; then
-    WKVIRTUALHOST="VirtualBox"
-    if which VBoxClient &> /dev/null; then
-        WKVIRTUALADDITIONS=""
-    else
-        WKVIRTUALADDITIONS=" NO GUEST ADDITIONS "
+if [ "$WKLSPCI" != "scanpci" ]; then
+    $WKLSPCI | (grep "VirtualBox" &> /dev/null)
+    if [ "$?" -eq "0" ]; then
+        WKVIRTUALHOST="VirtualBox"
+        if which VBoxClient &> /dev/null; then
+            WKVIRTUALADDITIONS=""
+        else
+            WKVIRTUALADDITIONS=" NO GUEST ADDITIONS "
+        fi
     fi
 fi
 
@@ -29,8 +41,9 @@ WKNUMTHREADS=3
 
 alias mj="make -j$WKNUMTHREADS"
 alias projects="cd $WKPROJECTS && PS1='\n<projects> ' && ls --color=always"
-alias ll="ls -l"
-alias la="ls -a"
+alias ls="ls --color=auto"
+alias ll="ls --color=auto -l"
+alias la="ls --color=auto -a"
 
 # Pick an editor to launch when I lazily type "e". Start with preferences
 WKEDITORLIST=( gedit kwrite medit )
