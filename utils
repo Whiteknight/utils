@@ -1,11 +1,17 @@
-# Add these lines to your ~/.bashrc and maybe your /root/.bashrc files:
+# Add these lines to your ~/.bashrc (or ~/.bashrc.local) and maybe your
+# /root/.bashrc files:
 #
 #     WKPROJECTS=<your projects directory here>
 #     . $WKPROJECTS/utils/utils
-#     . $WKPROJECTS/utils/parrot_utils
 #
-# If you don't set WKPROJECTS, it will default to "/home/andrew/projects"
+# Note: All variables in use here will be named WK* to prevent collisions.
+#     
+# If you don't set WKPROJECTS, it will default to "/home/andrew/projects", but
+# won't be available in your .bashrc
 WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
+for WKTEMPF in $WKPROJECTS/utils/*.sh; do
+    source $WKTEMPF;
+done
 
 # OpenSolaris doesn't have lspci, scanpci does the same thing, but requires
 # sudo, which I don't want to use for startup scripts like this. So, need to
@@ -91,15 +97,9 @@ function pg {
 }
 
 function up {
-    if [ -e ".svn" ]; then
-        svn update
-        __update_version
-        return
-    fi
-    if [ -e ".git" ]; then
-        git pull
-        return
-    fi
+    [ -e ".svn" ] && svn update $*
+    [ -e ".git" ] && git pull $*
+    __update_version
 }
 
 
