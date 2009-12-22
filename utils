@@ -9,9 +9,12 @@
 # If you don't set WKPROJECTS, it will default to "/home/andrew/projects", but
 # won't be available in your .bashrc
 WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
+WKADDONS="Addons: "
 for WKTEMPF in $WKPROJECTS/utils/*.sh; do
     source $WKTEMPF;
+    WKADDONS="$WKADDONS ${WKTEMPF##*/}"
 done
+
 
 # OpenSolaris doesn't have lspci, scanpci does the same thing, but requires
 # sudo, which I don't want to use for startup scripts like this. So, need to
@@ -83,6 +86,7 @@ WKDISTROTYPE=${WKDISTROTYPE:-"Unknown"}
 
 # Display some basic information in a header on console startup
 echo "$WKVIRTUALHOST$WKVIRTUALADDITIONS: $WKDISTROTYPE - editor: $WKEINTERNAL - packager: $WKGETINTERNAL"
+echo "$WKADDONS"
 
 function __update_version {
     WKPGVERSION=$(perl $WKPROJECTS/utils/get_version.pl)
