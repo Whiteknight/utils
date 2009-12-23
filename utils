@@ -5,7 +5,7 @@
 #     . $WKPROJECTS/utils/utils
 #
 # Note: All variables in use here will be named WK* to prevent collisions.
-#     
+#
 # If you don't set WKPROJECTS, it will default to "/home/andrew/projects", but
 # won't be available in your .bashrc
 WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
@@ -92,12 +92,12 @@ function __update_version {
     WKPGVERSION=$(perl $WKPROJECTS/utils/get_version.pl)
     WKPGPROJECT=${WKPGPROJECT:-$(pwd)}
     PS1="\n<$WKPGPROJECT $WKPGVERSION> "
+    return 0
 }
 
 function pg {
     WKPGPROJECT=$1
-    cd $WKPROJECTS/$1 && __update_version
-    pwd
+    cd $WKPROJECTS/$1 && __update_version &&  pwd
 }
 
 function up {
@@ -105,5 +105,3 @@ function up {
     [ -e ".git" ] && git pull $*
     __update_version
 }
-
-

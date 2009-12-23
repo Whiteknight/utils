@@ -11,20 +11,45 @@ function parrot-uninstall {
 }
 
 # If we have ccache, use that because it speeds things up significantly
-WKPARROTUSECCACHE=""
-which ccache &> /dev/null && WKPARROTUSECCACHE="--cc='ccache gcc'"
+#WKPARROTUSECCACHE=""
+#which ccache &> /dev/null && WKPARROTUSECCACHE="--cc='ccache gcc'"
 
-# If we have flex and bison, set that up. No sense in not using them
-WKPARROTMAINTAINER=""
-which flex &> /dev/null && which bison &> /dev/null && WKPARROTMAINTAINER="--maintainer"
-
-# Configuration shorthands.
-alias pc="perl Configure.pl $WKPARROTUSECCACHE $WKPARROTMAINTAINER"
+# Configuration/build routines for projects using parrot-nqp or setup.pir
 alias pcn="parrot-nqp Configure.nqp"
 alias pcs="parrot setup.pir build"
-# What to do here if g++ is not installed? Just let Configure.pl catch it?
-alias pc++="perl Configure.pl $WKPARROTMAINTAINER --cc=g++ --cxx=g++ --link=g++"
-# TODO: Add configuration shorthands for other compilers too (LLVM?)
+
+# Parrot configuration. If the first argument is the name of a supported compiler,
+# use that compiler. Otherwise all arguments are passed to Configure.pl
+function pc {
+    # If we have flex and bison, set that up. No sense in not using them
+    local WKPARROTMAINTAINER=""
+    local WKCOMMANDLINE="$*"
+    which flex &> /dev/null && which bison &> /dev/null && WKPARROTMAINTAINER="--maintainer"
+    case $1 in
+        "gcc")
+            shift;
+            WKCOMMANDLINE="--cc=gcc --link=gcc --ld=ld"
+            ;;
+        "clang")
+            if ! which clang &> /dev/null; then
+                echo "clang not installed"
+                return 1
+            fi
+            shift
+            WKCOMMANDLINE="--cc=clang --link=clang --ld=clang"
+            ;;
+        "g++")
+            if ! which g++ &> /dev/null; then
+                echo "g++ not installed"
+                return 1
+            fi
+            shift
+            WKCOMMANDLINE="--cc=g++ --cxx=g++ --link=g++"
+            ;;
+    esac
+    echo "Configuring with: '$WKMAINTAINER $WKCOMMANDLINE $*'"
+    perl Configure.pl $WKPARROTMAINTAINER $WKCOMMANDLINE $*
+}
 
 # I find 5 is a pretty optimum number, don't need to use NUMTHREADS.
 alias pt="make TEST_JOBS=5"
