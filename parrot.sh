@@ -46,6 +46,22 @@ function pc {
             shift
             WKCOMMANDLINE="--cc=g++ --cxx=g++ --link=g++"
             ;;
+        "icc")
+            if [ ! -e $WKICC ]; then
+                echo "icc not installed or not found"
+                return 1
+            fi
+            shift
+            WKCOMMANDLINE="--cc=icc --link=icc --ld=icc"
+            ;;
+        "icpc")
+            if [ ! -e $WKICC ]; then
+                echo "icpc/icc not installed or not found"
+                return 1
+            fi
+            shift
+            WKCOMMANDLINE="--cc=icpc --cxx=icpc --link=icpc --ld=icpc"
+            ;;
     esac
     echo "Configuring with: '$WKMAINTAINER $WKCOMMANDLINE $*'"
     perl Configure.pl $WKPARROTMAINTAINER $WKCOMMANDLINE $*

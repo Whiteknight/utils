@@ -7,14 +7,15 @@
 # Note: All variables in use here will be named WK* to prevent collisions.
 #
 # If you don't set WKPROJECTS, it will default to "/home/andrew/projects", but
-# won't be available in your .bashrc
+# won't be available in your .bashrc file
 WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
+
+# Setup our addons list
 WKADDONS="Addons: "
 for WKTEMPF in $WKPROJECTS/utils/*.sh; do
     source $WKTEMPF;
     WKADDONS="$WKADDONS ${WKTEMPF##*/}"
 done
-
 
 # OpenSolaris doesn't have lspci, scanpci does the same thing, but requires
 # sudo, which I don't want to use for startup scripts like this. So, need to
