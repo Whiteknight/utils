@@ -18,13 +18,13 @@ function parrot-uninstall {
 alias pcn="parrot-nqp Configure.nqp"
 alias pcs="parrot setup.pir build"
 
+#Setup some arguments that are always used to configure Parrot
+WKPARROTSTDARGS="--no-line-directives"
+
 # Parrot configuration. If the first argument is the name of a supported compiler,
 # use that compiler. Otherwise all arguments are passed to Configure.pl
 function pc {
-    # If we have flex and bison, set that up. No sense in not using them
-    local WKPARROTMAINTAINER=""
-    local WKCOMMANDLINE="$*"
-    which flex &> /dev/null && which bison &> /dev/null && WKPARROTMAINTAINER="--maintainer"
+    local WKCOMMANDLINE="";
     case $1 in
         "gcc")
             shift;
@@ -63,8 +63,17 @@ function pc {
             WKCOMMANDLINE="--cc=icpc --cxx=icpc --link=icpc --ld=icpc"
             ;;
     esac
-    echo "Configuring with: '$WKMAINTAINER $WKCOMMANDLINE $*'"
-    perl Configure.pl $WKPARROTMAINTAINER $WKCOMMANDLINE $*
+
+    # If we have flex and bison, set that up. No sense in not using them
+    WKPARROTMAINTAINER=""
+    which flex &> /dev/null && which bison &> /dev/null && WKPARROTMAINTAINER="--maintainer"
+
+    if [ -e "Configure.pl" ]; then
+        echo "Configuring with: '$WKMAINTAINER $WKCOMMANDLINE $WKPARROTSTDARGS $*'"
+        perl Configure.pl $WKPARROTMAINTAINER $WKCOMMANDLINE $WKSTDARGS $*
+    else
+        echo "Configure.pl not found."
+    fi
 }
 
 # I find 5 is a pretty optimum number, don't need to use NUMTHREADS.
