@@ -3,13 +3,14 @@
 # basic tools that I use and try to setup some of the basic settings I like.
 # The process will be very interactive in parts
 function global_setup {
-    if [ ! -e "~/UtilsSetup.log" ]; then
+    if [ ! -e ~/UtilsSetup.log ]; then
         __general_setup
         __ssh_setup
         __projects_setup
         __git_setup
         __utils_setup
         __svn_setup
+        
     fi
     echo "Everything appears to be setup!"
 }
@@ -29,19 +30,19 @@ function __general_setup {
 
 function __ssh_setup {
     # Just follow the instructions
-    if [ ! -e "~/.ssh/id_rsa.pub" ]; then
+    if [ ! -f ~/.ssh/id_rsa.pub ]; then
         __setup_log "Setting up ssh key..."
         ssh-keygen -t rsa -C "wknight8111@gmail.com"
         __setup_log "Done."
     fi
     echo "Add the following SSH key to github:"
     cat ~/.ssh/id_rsa.pub
-    firefox www.github.com
+    firefox www.github.com &
     read -n 1 -s
 }
 
 function __projects_setup {
-    if [ ! -e "~/projects" ]; then
+    if [ ! -d ~/projects ]; then
         __setup_log "Creating projects directory..."
         mkdir ~/projects
         __setup_log "Done."
@@ -49,7 +50,7 @@ function __projects_setup {
 }
 
 function __utils_setup {
-    if [ ! -d "~/projects/utils" ]; then
+    if [ ! -d ~/projects/utils ]; then
         __setup_log "Getting utils..."
         git clone git@github.com:Whiteknight/utils ~/projects/utils
         __setup_log "Done."
