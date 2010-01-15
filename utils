@@ -10,13 +10,6 @@
 # won't be available in your .bashrc file
 WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
 
-# Setup our addons list
-WKADDONS="Addons: "
-for WKTEMPF in $WKPROJECTS/utils/*.sh; do
-    source $WKTEMPF;
-    WKADDONS="$WKADDONS ${WKTEMPF##*/}"
-done
-
 # OpenSolaris doesn't have lspci, scanpci does the same thing, but requires
 # sudo, which I don't want to use for startup scripts like this. So, need to
 # find an alternate way to do this.
@@ -84,6 +77,14 @@ do
 done
 alias getpkg="sudo $WKGETINTERNAL install"
 WKDISTROTYPE=${WKDISTROTYPE:-"Unknown"}
+
+# Setup our addons list. We do this last because the addons may depend on
+# Things in this file
+WKADDONS="Addons: "
+for WKTEMPF in $WKPROJECTS/utils/*.sh; do
+    source $WKTEMPF;
+    WKADDONS="$WKADDONS ${WKTEMPF##*/}"
+done
 
 # Display some basic information in a header on console startup
 echo "$WKVIRTUALHOST$WKVIRTUALADDITIONS: $WKDISTROTYPE - editor: $WKEINTERNAL - packager: $WKGETINTERNAL"
