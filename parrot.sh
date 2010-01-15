@@ -28,7 +28,7 @@ function pc {
     case $1 in
         "gcc")
             shift;
-            WKCOMMANDLINE="--cc=gcc --link=gcc --ld=ld"
+            WKCOMMANDLINE="--cc=gcc --link=gcc --ld=gcc"
             ;;
         "clang")
             if ! which clang &> /dev/null; then
@@ -65,11 +65,11 @@ function pc {
     esac
 
     # If we have flex and bison, set that up. No sense in not using them
-    WKPARROTMAINTAINER=""
+    local WKPARROTMAINTAINER=""
     which flex &> /dev/null && which bison &> /dev/null && WKPARROTMAINTAINER="--maintainer"
 
     if [ -e "Configure.pl" ]; then
-        echo "Configuring with: '$WKMAINTAINER $WKCOMMANDLINE $WKPARROTSTDARGS $*'"
+        echo "Configuring with: '$WKPARROTMAINTAINER $WKCOMMANDLINE $WKPARROTSTDARGS $*'"
         perl Configure.pl $WKPARROTMAINTAINER $WKCOMMANDLINE $WKSTDARGS $*
     else
         echo "Configure.pl not found."
