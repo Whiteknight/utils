@@ -3,29 +3,21 @@
 # basic tools that I use and try to setup some of the basic settings I like.
 # The process will be very interactive in parts
 function global_setup {
-    if [ ! -e ~/UtilsSetup.log ]; then
-        __general_setup
-        __ssh_setup
-        __projects_setup
-        __git_setup
-        __utils_setup
-        __svn_setup
-        
-    fi
+    __setup_log "Starting setup at " $(date)
+    __general_setup
+    __ssh_setup
+    __projects_setup
+    __git_setup
+    __utils_setup
+    __svn_setup
+    __dev_setup
+    __setup_log "Done at " $(date)
     echo "Everything appears to be setup!"
 }
 
 function __general_setup {
-    if ! which medit 2>&1 > /dev/null; then
-        __setup_log "Fetching medit..."
-        getpkg medit
-        __setup_log "Done."
-    fi
-    if ! which nano 2>&1 > /dev/null; then
-        __setup_log "Fetching nano..."
-        getpkg nano
-        __setup_log "Done."
-    fi
+    __get_program medit medit
+    __get_program nano nano
 }
 
 function __ssh_setup {
@@ -35,10 +27,19 @@ function __ssh_setup {
         ssh-keygen -t rsa -C "wknight8111@gmail.com"
         __setup_log "Done."
     fi
-    echo "Add the following SSH key to github:"
-    cat ~/.ssh/id_rsa.pub
-    firefox www.github.com &
-    read -n 1 -s
+    # Run this to see if we have access.
+    ssh git@github.com
+    if [ "$?" == "255" ]; then
+        __setup_log "Setting up SSH access to Github"
+        echo "Add the following SSH key to github:"
+        cat ~/.ssh/id_rsa.pub
+        # TODO: What about console-only OS's?
+        __setup_log "Opening Firefox..."
+        firefox www.github.com &
+        echo "Press any key to continue."
+        read -n 1 -s
+        __setup_log "Done."
+    fi
 }
 
 function __projects_setup {
@@ -65,11 +66,7 @@ function __utils_setup {
 }
 
 function __git_setup {
-    if ! which git 2>&1 > /dev/null; then
-        __setup_log "Fetching git..."
-        getpkg git-core
-        __setup_log "Done."
-    fi
+    __get_program git git-core
     __setup_log "Setting up Git configuration..."
     git config --global user.name Whiteknight
     git config --global user.email "wknight8111@gmail.com"
@@ -78,13 +75,30 @@ function __git_setup {
 }
 
 function __svn_setup {
-    if ! which svn 2>&1 > /dev/null; then
-        __setup_log "Fetching svn..."
-        getpkg subversion
-        __setup_log "Done."
-    fi
+    __get_program svn subversion
 }
 
+function __dev_setup {
+    __get_program flex flex
+    __get_program bison bison
+    # TODO: What else? gcc? binutils?
+}
+
+
+# HELPER FUNCTIONS
+function __find_program {
+    which $1 2>&1 > /dev/null
+    return $?
+}
+
+function __get_program {
+    __setup_log "Searching for $1 ($2)..."
+    if ! __find_program $1; then
+        __setup_log "Fetching $1 ($2)..."
+        getpkg $2
+    fi
+    __setup_log "Done."
+}
 function __setup_log {
     echo "$*"
     echo "$*" >> ~/UtilsSetup.log
