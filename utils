@@ -10,11 +10,17 @@
 # won't be available in your .bashrc file
 WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
 
+# Log function. Things that happen automatically should be logged.
+function __setup_log {
+    echo "$*"
+    echo "$*" >> ~/UtilsSetup.log
+}
+
 # OpenSolaris doesn't have lspci, scanpci does the same thing, but requires
 # sudo, which I don't want to use for startup scripts like this. So, need to
 # find an alternate way to do this.
 WKLSPCI="lspci"
-if ! which lspci &> /dev/null; then
+if ! __find_program lscpi; then
     WKLSPCI="scanpci"
 fi
 
@@ -28,7 +34,7 @@ if [ "$WKLSPCI" != "scanpci" ]; then
     $WKLSPCI | (grep "VirtualBox" &> /dev/null)
     if [ "$?" -eq "0" ]; then
         WKVIRTUALHOST="VirtualBox"
-        if which VBoxClient &> /dev/null; then
+        if __find_program VBoxClient; then
             WKVIRTUALADDITIONS=""
         else
             WKVIRTUALADDITIONS=" NO GUEST ADDITIONS "
@@ -55,7 +61,7 @@ WKIVAR=0
 WKEINTERNAL="echo 'no editors found'"
 while [ "$WKIVAR" -lt "$WKEDITORLISTCNT" ];
 do
-    which ${WKEDITORLIST[WKIVAR]} &> /dev/null && WKEINTERNAL=${WKEDITORLIST[WKIVAR]}
+    __find_program ${WKEDITORLIST[WKIVAR]} && WKEINTERNAL=${WKEDITORLIST[WKIVAR]}
     ((WKIVAR++))
 done
 function e { $WKEINTERNAL $* & }
@@ -69,7 +75,7 @@ WKIVAR=0
 WKGETINTERNAL="echo 'no package managers found'"
 while [ "$WKIVAR" -lt "$WKPKGMANAGERLISTCNT" ]
 do
-    if which ${WKPKGMANAGERLIST[WKIVAR]} &> /dev/null; then
+    if __find_program ${WKPKGMANAGERLIST[WKIVAR]}; then
         WKGETINTERNAL=${WKPKGMANAGERLIST[WKIVAR]}
         WKDISTROTYPE=${WKDISTROLIST[WKIVAR]}
     fi
@@ -77,6 +83,21 @@ do
 done
 alias getpkg="sudo $WKGETINTERNAL install"
 WKDISTROTYPE=${WKDISTROTYPE:-"Unknown"}
+
+# Two functions to manage getting software
+function __find_program {
+    which $1 2>&1 > /dev/null
+    return $?
+}
+
+function __get_program {
+    __setup_log "Searching for $1 ($2)..."
+    if ! __find_program $1; then
+        __setup_log "Fetching $1 ($2)..."
+        getpkg $2
+    fi
+    __setup_log "Done."
+}
 
 # Setup our addons list. We do this last because the addons may depend on
 # Things in this file

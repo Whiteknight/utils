@@ -84,22 +84,3 @@ function __dev_setup {
     # TODO: What else? gcc? binutils?
 }
 
-
-# HELPER FUNCTIONS
-function __find_program {
-    which $1 2>&1 > /dev/null
-    return $?
-}
-
-function __get_program {
-    __setup_log "Searching for $1 ($2)..."
-    if ! __find_program $1; then
-        __setup_log "Fetching $1 ($2)..."
-        getpkg $2
-    fi
-    __setup_log "Done."
-}
-function __setup_log {
-    echo "$*"
-    echo "$*" >> ~/UtilsSetup.log
-}
