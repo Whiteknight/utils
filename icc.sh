@@ -11,7 +11,7 @@ if [ -d "/opt/intel/" ]; then
     #       names it defines will conflict with other compilers
     if [ -e $WKICC ]; then
         WKICCPATH=${WKICC%/icc}
-        source $WKICCPATH/iccvars_ia32.sh
+        source $WKICCPATH/iccvars_*.sh
     fi
 fi
 
