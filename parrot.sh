@@ -79,3 +79,11 @@ function pc {
 # I find 5 is a pretty optimum number, don't need to use NUMTHREADS.
 alias pt="make TEST_JOBS=5"
 
+function smoke {
+	if [ -e "Makefile" ]; then
+		make realclean
+	fi
+	pc $1
+	mj
+	make smoke
+}
