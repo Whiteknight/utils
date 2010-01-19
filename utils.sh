@@ -17,7 +17,7 @@ function __setup_log {
 }
 
 function __find_program {
-    which $1 2>&1 > /dev/null
+    which $1 >& /dev/null
     return $?
 }
 
