@@ -2,7 +2,7 @@
 # /root/.bashrc files:
 #
 #     WKPROJECTS=<your projects directory here>
-#     . $WKPROJECTS/utils/utils
+#     . $WKPROJECTS/utils/utils.sh
 #
 # Note: All variables in use here will be named WK* to prevent collisions.
 #
@@ -16,11 +16,19 @@ function __setup_log {
     echo "$*" >> ~/UtilsSetup.log
 }
 
+# Determine if the given program is installed and visible on PATH
 function __find_program {
-    which $1 >& /dev/null
-    return $?
+    for WKPROGRAM in $*; do
+        which $WKPROGRAM >& /dev/null
+        if [ "$?" != "0" ]; then
+            return 1
+        fi
+    done
+    return 0
 }
 
+# Download the program with the given name and package name, if we don't
+# have it already.
 function __get_program {
     __setup_log "Searching for $1 ($2)..."
     if ! __find_program $1; then
@@ -28,6 +36,11 @@ function __get_program {
         getpkg $2
     fi
     __setup_log "Done."
+}
+
+# Set the default prompt for when we aren't in a work environment
+function __set_default_prompt {
+    PS1="\n<\u \h> "
 }
 
 # OpenSolaris doesn't have lspci, scanpci does the same thing, but requires
@@ -106,6 +119,9 @@ for WKTEMPF in $WKPROJECTS/utils/addons/*.sh; do
     WKADDONS="$WKADDONS ${WKTEMPF##*/}"
 done
 
+# Set our default prompt
+__set_default_prompt
+
 # Display some basic information in a header on console startup
 echo "$WKVIRTUALHOST$WKVIRTUALADDITIONS: $WKDISTROTYPE - editor: $WKEINTERNAL - packager: $WKGETINTERNAL"
 echo "$WKADDONS"
@@ -118,8 +134,17 @@ function __update_version {
 }
 
 function pg {
-    WKPGPROJECT=$1
-    cd $WKPROJECTS/$1 && __update_version &&  pwd
+    if [ "$#" == "0" ]; then
+        WKPGPROJECT="NONE"
+        __set_default_prompt
+    else
+        if [ -d $WKPROJECTS/$1 ]; then
+            WKPGPROJECT=$1
+            cd $WKPROJECTS/$1 && __update_version &&  pwd
+        else
+            WKPROJECT="NONE"
+        fi
+    fi
 }
 
 function up {
@@ -127,3 +152,4 @@ function up {
     [ -e ".git" ] && git pull $*
     __update_version
 }
+

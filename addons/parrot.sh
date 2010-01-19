@@ -1,14 +1,6 @@
 # Addons to make life easier developing Parrot
 
-# Uninstall an installed Parrot. Nuke.
-function parrot-uninstall {
-    sudo rm -rfv /usr/local/bin/parrot*
-    sudo rm -rfv /usr/local/bin/pbc*
-    sudo rm -rfv /usr/local/lib/parrot*
-    sudo rm -rfv /usr/local/lib/libparrot*
-    sudo rm -rfv /usr/local/src/parrot*
-    sudo rm -rfv /usr/local/include/parrot*
-}
+
 
 # If we have ccache, use that because it speeds things up significantly
 #WKPARROTUSECCACHE=""
@@ -28,10 +20,12 @@ function pc {
     case $1 in
         "gcc")
             shift;
-            WKCOMMANDLINE="--cc=gcc --link=gcc --ld=gcc"
+            local WKCOMPILER="gcc"
+            __find_command ccache && WKCOMPILER="ccache gcc"
+            WKCOMMANDLINE="--cc='$WKCOMPILER' --link=gcc --ld=gcc"
             ;;
         "clang")
-            if ! which clang &> /dev/null; then
+            if ! __find_program clang; then
                 echo "clang not installed"
                 return 1
             fi
@@ -39,7 +33,7 @@ function pc {
             WKCOMMANDLINE="--cc=clang --link=clang --ld=clang"
             ;;
         "g++")
-            if ! which g++ &> /dev/null; then
+            if ! __find_program g++; then
                 echo "g++ not installed"
                 return 1
             fi
@@ -66,7 +60,7 @@ function pc {
 
     # If we have flex and bison, set that up. No sense in not using them
     local WKPARROTMAINTAINER=""
-    which flex &> /dev/null && which bison &> /dev/null && WKPARROTMAINTAINER="--maintainer"
+    __find_program flex bison && WKPARROTMAINTAINER="--maintainer"
 
     if [ -e "Configure.pl" ]; then
         echo "Configuring with: '$WKPARROTMAINTAINER $WKCOMMANDLINE $WKPARROTSTDARGS $*'"
@@ -79,11 +73,36 @@ function pc {
 # I find 5 is a pretty optimum number, don't need to use NUMTHREADS.
 alias pt="make TEST_JOBS=5"
 
-function smoke {
-	if [ -e "Makefile" ]; then
-		make realclean
-	fi
-	pc $1
-	mj
-	make smoke
+# Functions to work with Parrot
+
+# Uninstall an installed Parrot. Nuke.
+function parrot-uninstall {
+    sudo rm -rfv /usr/local/bin/parrot*
+    sudo rm -rfv /usr/local/bin/pbc*
+    sudo rm -rfv /usr/local/lib/parrot*
+    sudo rm -rfv /usr/local/lib/libparrot*
+    sudo rm -rfv /usr/local/src/parrot*
+    sudo rm -rfv /usr/local/include/parrot*
+}
+
+# An end-to-end test of Parrot with a given compiler
+function parrot-smoke {
+    if [ -e "Makefile" ]; then
+        make realclean
+    fi
+    pc $*
+    mj
+    make smoke
+}
+
+# Function to checkout parrot trunk or a particular branch.
+function parrot-get {
+    local PARROTFOLDER=${1:"parrot"}
+    if [ ! -e $WKPROJECTS/$PARROTFOLDER ]; then
+        if [ $PARROTFOLDER == "parrot" ]; then
+            svn co https://svn.parrot.org/parrot/trunk $WKPROJECTS/parrot
+        else
+            svn co https://svn.parrot.org/parrot/branches/$PARROTFOLDER $WKPROJECTS/$PARROTFOLDER
+        fi
+    fi
 }
