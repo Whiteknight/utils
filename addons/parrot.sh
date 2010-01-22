@@ -1,7 +1,5 @@
 # Addons to make life easier developing Parrot
 
-
-
 # If we have ccache, use that because it speeds things up significantly
 #WKPARROTUSECCACHE=""
 #which ccache &> /dev/null && WKPARROTUSECCACHE="--cc='ccache gcc'"
