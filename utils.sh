@@ -5,22 +5,20 @@
 #     . $WKPROJECTS/utils/utils.sh
 #
 # Note: All variables in use here will be named WK* to prevent collisions.
-#
+
 # If you don't set WKPROJECTS, it will default to "/home/andrew/projects", but
 # won't be available in your .bashrc file
 WKPROJECTS=${WKPROJECTS:-'/home/andrew/projects'}
 
 # Log function. Things that happen automatically should be logged.
 function __setup_log {
-    echo "$*"
-    echo "$*" >> ~/UtilsSetup.log
+    echo "$@" | tee -a ~/UtilsSetup.log
 }
 
 # Determine if the given program is installed and visible on PATH
 function __find_program {
     for WKPROGRAM in $*; do
-        which $WKPROGRAM >& /dev/null
-        if [ "$?" != "0" ]; then
+        if ! which $WKPROGRAM >& /dev/null; then
             return 1
         fi
     done
@@ -72,9 +70,11 @@ fi
 # Number of simultaneous threads we use for make. This should be
 # number_of_processors + 1. In a virtual environment where we are resource
 # constrained, only use one.
+# TODO: We should be able to calculate this dynamically
 WKNUMTHREADS=3
 [ "$WKVIRTUALHOST" == "VirtualBox" ] && WKNUMTHREADS=1
 
+# These are some basic aliases that I like
 alias mj="make -j$WKNUMTHREADS"
 alias projects="cd $WKPROJECTS && PS1='\n<projects> ' && ls --color=always"
 alias ls="ls --color=auto"
@@ -126,6 +126,7 @@ __set_default_prompt
 echo "$WKVIRTUALHOST$WKVIRTUALADDITIONS: $WKDISTROTYPE - editor: $WKEINTERNAL - packager: $WKGETINTERNAL"
 echo "$WKADDONS"
 
+# Update the prompt used when we change branch/version
 function __update_version {
     WKPGVERSION=$(perl $WKPROJECTS/utils/get_version.pl)
     WKPGPROJECT=${WKPGPROJECT:-$(pwd)}
@@ -133,6 +134,7 @@ function __update_version {
     return 0
 }
 
+# Setup the environment for the given project
 function pg {
     if [ "$#" == "0" ]; then
         WKPGPROJECT="NONE"
@@ -143,13 +145,23 @@ function pg {
             cd $WKPROJECTS/$1 && __update_version &&  pwd
         else
             WKPROJECT="NONE"
+            echo "Project $1 not found."
         fi
     fi
 }
 
+# Update the given repo, if it's a working copy. Do nothing otherwise
 function up {
+    # TODO: Check for local mods. In the case of git we might want to stash
+    #       first.
     [ -e ".svn" ] && svn update $*
     [ -e ".git" ] && git pull $*
     __update_version
+}
+
+# Cleanup the given repo if it's a dirty working copy. Do nothing otherwise.
+function cleanup {
+    [ -e ".svn" ] && svn revert -R ./
+    [ -e ".git" ] && git reset --hard
 }
 
