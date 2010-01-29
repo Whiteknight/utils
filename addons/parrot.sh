@@ -81,6 +81,7 @@ function parrot-uninstall {
     sudo rm -rfv /usr/local/lib/libparrot*
     sudo rm -rfv /usr/local/src/parrot*
     sudo rm -rfv /usr/local/include/parrot*
+    sudo rm -rfv /usr/local/include/pmc*
 }
 
 # An end-to-end test of Parrot with a given compiler
