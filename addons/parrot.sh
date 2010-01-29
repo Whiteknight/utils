@@ -95,7 +95,7 @@ function parrot-smoke {
 
 # Function to checkout parrot trunk or a particular branch.
 function parrot-get {
-    local PARROTFOLDER=${1:"parrot"}
+    local PARROTFOLDER=${1:-"parrot"}
     if [ ! -e $WKPROJECTS/$PARROTFOLDER ]; then
         if [ $PARROTFOLDER == "parrot" ]; then
             svn co https://svn.parrot.org/parrot/trunk $WKPROJECTS/parrot
