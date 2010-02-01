@@ -104,4 +104,5 @@ function parrot-get {
             svn co https://svn.parrot.org/parrot/branches/$PARROTFOLDER $WKPROJECTS/$PARROTFOLDER
         fi
     fi
+    pg $PARROTFOLDER
 }
