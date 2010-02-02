@@ -9,4 +9,6 @@ function global_setup {
     exit
 }
 
-
+function compilers {
+    echo "no"
+}
