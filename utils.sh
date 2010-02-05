@@ -79,6 +79,7 @@ alias mj="make -j$WKNUMTHREADS"
 alias ls="ls --color=auto"
 alias ll="ls --color=auto -l"
 alias la="ls --color=auto -a"
+function cdl { cd %* && ls }
 
 # Pick an editor to launch when I lazily type "e". Start with preferences
 WKEDITORLIST=( gedit kwrite medit )
