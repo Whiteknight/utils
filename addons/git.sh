@@ -16,6 +16,7 @@ function github-get {
 }
 
 function github-create {
+    echo "Not done"
     # TODO: Create a new repo in $WKPROJECTS/$1, git init, push to github.
     # TODO: Create default files README.pod, LICENSE for initial commit
 }
