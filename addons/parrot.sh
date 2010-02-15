@@ -54,6 +54,14 @@ function pc {
             shift
             WKCOMMANDLINE="--cc=icpc --cxx=icpc --link=icpc --ld=icpc"
             ;;
+        "suncc")
+            if ! __find_program suncc; then
+                echo "suncc not installed"
+                return 1
+            fi
+            shift
+            WKCOMMANDLINE="--cc=suncc --link=suncc --ld=suncc --cgoto=0"
+            ;;
     esac
 
     # If we have flex and bison, set that up. No sense in not using them
