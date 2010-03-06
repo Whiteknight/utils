@@ -58,7 +58,7 @@ function pc {
 
     # If we have flex and bison, set that up. No sense in not using them
     local WKPARROTMAINTAINER=""
-    __find_program flex bison && WKPARROTMAINTAINER="--maintainer"
+    #__find_program flex bison && WKPARROTMAINTAINER="--maintainer"
 
     if [ -e "Configure.pl" ]; then
         echo "Configuring with: '$WKPARROTMAINTAINER $WKCOMMANDLINE $WKPARROTSTDARGS $*'"
