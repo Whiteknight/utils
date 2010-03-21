@@ -8,8 +8,11 @@
 alias pcn="parrot-nqp Configure.nqp"
 alias pcs="parrot setup.pir build"
 
-#Setup some arguments that are always used to configure Parrot
+# Setup some arguments that are always used to configure Parrot
 WKPARROTSTDARGS="--no-line-directives"
+
+# Var to simplify parrot svn operations
+PARROTSVN="https://svn.parrot.org/parrot"
 
 # Parrot configuration. If the first argument is the name of a supported compiler,
 # use that compiler. Otherwise all arguments are passed to Configure.pl
@@ -97,11 +100,12 @@ function parrot-smoke {
 # Function to checkout parrot trunk or a particular branch.
 function parrot-get {
     local PARROTFOLDER=${1:-"parrot"}
+    # TODO: Should have a way to get the latest RELEASE tag.
     if [ ! -e $WKPROJECTS/$PARROTFOLDER ]; then
         if [ $PARROTFOLDER == "parrot" ]; then
-            svn co https://svn.parrot.org/parrot/trunk $WKPROJECTS/parrot
+            svn co $PARROTSVN/trunk $WKPROJECTS/parrot
         else
-            svn co https://svn.parrot.org/parrot/branches/$PARROTFOLDER $WKPROJECTS/$PARROTFOLDER
+            svn co $PARROTSVN/branches/$PARROTFOLDER $WKPROJECTS/$PARROTFOLDER
         fi
     fi
     pg $PARROTFOLDER
