@@ -9,7 +9,8 @@ alias pcn="parrot-nqp Configure.nqp"
 alias pcs="parrot setup.pir build"
 
 # Setup some arguments that are always used to configure Parrot
-WKPARROTSTDARGS="--no-line-directives"
+# --no-line-directives seems to cause some problems now
+WKPARROTSTDARGS=""
 
 # Var to simplify parrot svn operations
 PARROTSVN="https://svn.parrot.org/parrot"
