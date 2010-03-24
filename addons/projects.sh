@@ -3,6 +3,10 @@
 # Move to the projects root directory
 alias projects="cd $WKPROJECTS && PS1='\n<projects> ' && ls --color=always"
 
+function cdl {
+    cd $1 && ls
+}
+
 # Update the prompt used when we change branch/version
 function __update_version {
     local WKPGVERSION=$(perl $WKPROJECTS/utils/get_version.pl)
