@@ -45,8 +45,15 @@ function __set_default_prompt {
 # sudo, which I don't want to use for startup scripts like this. So, need to
 # find an alternate way to do this.
 WKLSPCI="lspci"
-if ! __find_program lscpi; then
+if ! __find_program lspci; then
     WKLSPCI="scanpci"
+fi
+
+# Set a default compiler, for cases when we need to just pick a compiler. I
+# Am liking clang, so set that for default if it exists, set gcc otherwise.
+WKCC="clang"
+if ! __find_program clang; then
+    WKCC="gcc"
 fi
 
 # Figure out if we are being run virtually inside VirtualBox and, if so,

@@ -66,6 +66,9 @@ function pc {
             shift
             WKCOMMANDLINE="--cc=suncc --link=suncc --ld=suncc --cgoto=0"
             ;;
+        *)
+        pc $WKCC
+        return;
     esac
 
     # If we have flex and bison, set that up. No sense in not using them
