@@ -23,7 +23,7 @@ function pc {
         "gcc")
             shift;
             local WKCOMPILER="gcc"
-            __find_command ccache && WKCOMPILER="ccache gcc"
+            __find_program ccache && WKCOMPILER="ccache gcc"
             WKCOMMANDLINE="--cc='$WKCOMPILER' --link=gcc --ld=gcc"
             ;;
         "clang")
