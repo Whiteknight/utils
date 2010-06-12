@@ -104,9 +104,19 @@ function parrot-smoke {
     if [ -e "Makefile" ]; then
         make realclean
     fi
-    pc $*
-    mj
-    make smoke
+    pc $* && mj && mj smoke
+}
+
+# Test everything, end-to-end
+function parrot-testall {
+    parrot-smoke clang
+    parrot-smoke clang --optimize
+    parrot-smoke gcc
+    parrot-smoke gcc --optimize
+    parrot-smoke g++
+    parrot-smoke g++ --optimize
+    parrot-smoke icc
+    parrot-smoke icc --optimize
 }
 
 # Function to checkout parrot trunk or a particular branch.
