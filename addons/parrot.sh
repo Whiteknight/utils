@@ -133,5 +133,12 @@ function parrot-get {
     pg $PARROTFOLDER
 }
 
+function m {
+    [ -e ./setup.nqp ] && parrot-nqp setup.nqp $*
+    [ -e ./setup.pir ] && parrot setup.pir $*
+    [ -e ./Configure.pl ] && perl Configure.pl $*
+    [ -e ./Makefile ] && mj
+}
+
 
 
