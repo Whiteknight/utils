@@ -64,7 +64,7 @@ function pc {
                 return 1
             fi
             shift
-            WKCOMMANDLINE="--cc=suncc --link=suncc --ld=suncc --cgoto=0"
+            WKCOMMANDLINE="--cc=suncc --link=suncc --ld=suncc"
             ;;
         *)
         pc $WKCC
@@ -117,6 +117,8 @@ function parrot-testall {
     parrot-smoke g++ --optimize
     parrot-smoke icc
     parrot-smoke icc --optimize
+    parrot-smoke suncc
+    parrot-smoke suncc --optimize
 }
 
 # Function to checkout parrot trunk or a particular branch.
