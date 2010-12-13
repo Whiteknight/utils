@@ -1,5 +1,7 @@
 # Utilities for working with git and github
 
+[ -e "/var/lib/gems/1.8/bin/jekyll" ] && PATH=$PATH:/var/lib/gems/1.8/bin
+
 function github-get {
     # TODO: $2 can be the local name of the folder
     local HASSLASH=$(expr index "$1" /)
