@@ -9,11 +9,11 @@ function cdl {
 
 # Update the prompt used when we change branch/version
 function __update_version {
-    local WKPGVERSION=$(perl $WKPROJECTS/utils/get_version.pl)
+    local WKPGVERSION=""
     WKPGPROJECT=${WKPGPROJECT:-$(pwd)}
     local WKPGTYPE=""
-    [ -e ".svn" ] && WKPGTYPE="svn:"
-    [ -e ".git" ] && WKPGTYPE="git:"
+    [ -e ".svn" ] && WKPGTYPE="svn:" && WKPGVERSION=$(perl $WKPROJECTS/utils/get_version.pl)
+    [ -e ".git" ] && WKPGTYPE="git:" && WKPGVERSION="\$(git branch | grep '^* ' | sed 's/* //')"
     PS1="\n<$WKPGPROJECT $WKPGTYPE$WKPGVERSION> "
     return 0
 }
