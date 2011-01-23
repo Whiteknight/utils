@@ -67,7 +67,7 @@ function pc {
             WKCOMMANDLINE="--cc=suncc --link=suncc --ld=suncc"
             ;;
         *)
-        pc $WKCC
+        pc $WKCC $*
         return;
     esac
 
