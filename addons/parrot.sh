@@ -40,7 +40,7 @@ function pc {
                 return 1
             fi
             shift
-            WKCOMMANDLINE="--cc=g++ --cxx=g++ --link=g++"
+            WKCOMMANDLINE="--cc=g++ --link=g++"
             ;;
         "icc")
             if [ ! -e $WKICC ]; then
@@ -56,7 +56,7 @@ function pc {
                 return 1
             fi
             shift
-            WKCOMMANDLINE="--cc=icpc --cxx=icpc --link=icpc --ld=icpc"
+            WKCOMMANDLINE="--cc=icpc --link=icpc --ld=icpc"
             ;;
         "suncc")
             if ! __find_program suncc; then
