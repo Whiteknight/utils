@@ -129,6 +129,8 @@ for WKTEMPF in $WKPROJECTS/utils/addons/*.sh; do
     WKADDONS="$WKADDONS ${WKTEMPF##*/}"
 done
 
+PATH=$PATH:/usr/local/bin
+
 # Set our default prompt
 __set_default_prompt
 
