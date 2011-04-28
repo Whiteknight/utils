@@ -8,9 +8,13 @@
 alias pcn="parrot-nqp Configure.nqp"
 alias pcs="parrot setup.pir build"
 
+WKPARROTINSTALL=${WKPARROTINSTALL:-'/home/andrew/parrot'}
+
 # Setup some arguments that are always used to configure Parrot
 # --no-line-directives seems to cause some problems now
-WKPARROTSTDARGS=""
+WKPARROTSTDARGS="--no-line-directives --prefix=$WKPARROTINSTALL"
+
+PATH=$PATH:$WKPARROTINSTALL/bin
 
 # Var to simplify parrot svn operations
 PARROTSVN="https://svn.parrot.org/parrot"
@@ -67,8 +71,8 @@ function pc {
             WKCOMMANDLINE="--cc=suncc --link=suncc --ld=suncc"
             ;;
         *)
-        pc $WKCC $*
-        return;
+            pc $WKCC $*
+            return;
     esac
 
     # If we have flex and bison, set that up. No sense in not using them
@@ -77,7 +81,7 @@ function pc {
 
     if [ -e "Configure.pl" ]; then
         echo "Configuring with: '$WKPARROTMAINTAINER $WKCOMMANDLINE $WKPARROTSTDARGS $*'"
-        perl Configure.pl $WKPARROTMAINTAINER $WKCOMMANDLINE $WKSTDARGS $*
+        perl Configure.pl $WKPARROTMAINTAINER $WKCOMMANDLINE $WKPARROTSTDARGS $*
     else
         echo "Configure.pl not found."
     fi
@@ -90,13 +94,7 @@ alias pt="make TEST_JOBS=5"
 
 # Uninstall an installed Parrot. Nuke.
 function parrot-uninstall {
-    sudo rm -rfv /usr/local/bin/parrot*
-    sudo rm -rfv /usr/local/bin/pbc*
-    sudo rm -rfv /usr/local/lib/parrot*
-    sudo rm -rfv /usr/local/lib/libparrot*
-    sudo rm -rfv /usr/local/src/parrot*
-    sudo rm -rfv /usr/local/include/parrot*
-    sudo rm -rfv /usr/local/include/pmc*
+    rm -rfv $WKPARROTINSTALL/*
 }
 
 # An end-to-end test of Parrot with a given compiler
