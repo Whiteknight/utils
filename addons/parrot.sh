@@ -15,6 +15,8 @@ WKPARROTINSTALL=${WKPARROTINSTALL:-'/home/andrew/parrot'}
 WKPARROTSTDARGS="--no-line-directives --prefix=$WKPARROTINSTALL"
 
 PATH=$PATH:$WKPARROTINSTALL/bin
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WKPARROTINSTALL/lib
+LIBRARY_PATH=$LIBRARY_PATH:$WKPARROTINSTALL/lib
 
 # Var to simplify parrot svn operations
 PARROTSVN="https://svn.parrot.org/parrot"
@@ -97,12 +99,36 @@ function parrot-uninstall {
     rm -rfv $WKPARROTINSTALL/*
 }
 
+function parrot-install {
+    parrot-uninstall
+    pg parrot
+    if [ -e "Makefile" ]; then
+        mj realclean
+    fi
+    pc && mj && mj install && plumage-install && winxed-install
+}
+
+function plumage-install {
+    pg plumage
+    parrot setup.pir uninstall
+    parrot setup.pir clean
+    parrot setup.pir build
+    parrot setup.pir install
+}
+
+function winxed-install {
+    plumage uninstall winxed
+    plumage update winxed
+    plumage build winxed
+    plumage install winxed
+}
+
 # An end-to-end test of Parrot with a given compiler
 function parrot-smoke {
     if [ -e "Makefile" ]; then
         make realclean
     fi
-    pc $* && mj && mj smoke
+    pc $* && mj && pt test
 }
 
 # Test everything, end-to-end
@@ -117,20 +143,6 @@ function parrot-testall {
     parrot-smoke icc --optimize
     parrot-smoke suncc
     parrot-smoke suncc --optimize
-}
-
-# Function to checkout parrot trunk or a particular branch.
-function parrot-get {
-    local PARROTFOLDER=${1:-"parrot"}
-    # TODO: Should have a way to get the latest RELEASE tag.
-    if [ ! -e $WKPROJECTS/$PARROTFOLDER ]; then
-        if [ $PARROTFOLDER == "parrot" ]; then
-            svn co $PARROTSVN/trunk $WKPROJECTS/parrot
-        else
-            svn co $PARROTSVN/branches/$PARROTFOLDER $WKPROJECTS/$PARROTFOLDER
-        fi
-    fi
-    pg $PARROTFOLDER
 }
 
 function m {
