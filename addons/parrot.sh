@@ -105,7 +105,7 @@ function parrot-install {
     if [ -e "Makefile" ]; then
         mj realclean
     fi
-    pc && mj && mj install && plumage-install && winxed-install
+    pc && mj && mj install && plumage-install
 }
 
 function plumage-install {
