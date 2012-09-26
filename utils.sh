@@ -84,7 +84,7 @@ WKNUMTHREADS=3
 # These are some basic aliases that I like
 alias mj="make -j$WKNUMTHREADS"
 alias ls="ls --color=auto"
-alias ll="ls --color=auto -l"
+alias ll="ls --color=auto -lFh"
 alias la="ls --color=auto -a"
 function cdl {
     cd $*
