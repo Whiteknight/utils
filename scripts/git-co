@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git checkout $@
+git submodule update
