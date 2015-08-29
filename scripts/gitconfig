@@ -1,0 +1,15 @@
+[merge]
+	ff = only
+[push]
+	default = simple
+[alias]
+	tree = log --graph --oneline --decorate --all
+	undo = checkout --
+	lastdiff = diff HEAD^..HEAD
+	lastlog = log -p -2
+	ignore = update-index --assume-unchanged
+	ignored = !git ls-files -v | grep '^[[:lower:]]'
+	unignore = update-index --no-assume-unchanged
+	tracking = rev-parse --symbolic-full-name --abbrev-ref HEAD@{u}
+[pull]
+	ff = only
