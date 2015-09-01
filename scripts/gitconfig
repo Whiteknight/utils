@@ -11,5 +11,6 @@
 	ignored = !git ls-files -v | grep '^[[:lower:]]'
 	unignore = update-index --no-assume-unchanged
 	tracking = rev-parse --symbolic-full-name --abbrev-ref HEAD@{u}
+	up = fetch --all --prune
 [pull]
 	ff = only
