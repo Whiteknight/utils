@@ -29,6 +29,7 @@
     weekend = log --graph --oneline --decorate --since='3 days ago'
     mb = checkout -b
     hardmerge = merge --no-ff --no-commit
+    # https://github.com/schreifels/git-num
     nadd = num add
     nstat = num
     nres = num reset HEAD
