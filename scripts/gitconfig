@@ -1,16 +1,40 @@
 [merge]
+	tool = kdiff3
 	ff = only
+	conflictstyle = diff3
+[diff]
+	tool = kdiff3
+	guitool = kdiff3
 [push]
 	default = simple
 [alias]
-	tree = log --graph --oneline --decorate --all
-	undo = checkout --
-	lastdiff = diff HEAD^..HEAD
-	lastlog = log -p -2
-	ignore = update-index --assume-unchanged
-	ignored = !git ls-files -v | grep '^[[:lower:]]'
-	unignore = update-index --no-assume-unchanged
-	tracking = rev-parse --symbolic-full-name --abbrev-ref HEAD@{u}
-	up = fetch --all --prune
+    tree = log --graph --all --format='%C(auto)%h% %C(auto)%d %aN %Cgreen%aD%n%s%n'
+    treev = log --graph --decorate --all
+    undo = checkout --
+    lastdiff = diff HEAD^..HEAD
+    lastlog = log -p -2
+    ignore = update-index --assume-unchanged
+    ignored = !git ls-files -v | grep '^[[:lower:]]'
+    unignore = update-index --no-assume-unchanged
+    tracking = rev-parse --symbolic-full-name --abbrev-ref HEAD@{u}
+    up = fetch --all --prune
+    aliases = config --get-regexp alias
+    co = "!f() { git checkout $@ && git submodule update; }; f"
+    pr = "!f() { git fetch -fu ${2:-asi} refs/pull/$1/head:pr/$1 && git checkout pr/$1 && git submodule update; }; f"
+    pr-clean = "!git for-each-ref refs/heads/pr/* --format=\"%(refname)\" | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+    squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+    day = log --graph --oneline --decorate --since='24 hours ago'
+    week = log --graph --oneline --decorate --since='7 days ago'
+    b = checkout -b
+    weekend = log --graph --oneline --decorate --since='3 days ago'
+    mb = checkout -b
+    hardmerge = merge --no-ff --no-commit
+    nadd = num add
+    nstat = num
+    nres = num reset HEAD
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
 [pull]
 	ff = only
