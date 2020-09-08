@@ -15,6 +15,7 @@ Steps listed so I don't forget anything
    7. Install jq
    8. Install 7zip
    9. Install git/bash
+   10. Install nuget (dotnet nuget does't have all the features)
 4. Setup Git/Bash (can probably install with choco)
    1. Clone this utils repo
    2. Copy over ~/.bashrc
@@ -27,6 +28,9 @@ Steps listed so I don't forget anything
 5. Install VisualStudio
    1. Install resharper (if available)
    2. import settings
+   3. Make sure all necessary versions of the .NET SDK are installed
+   4. Install Productivity powertools
+   5. Install Guidelines
 6. Install Visual Studio Code
    1. Add C#, Markdown extensions, plus any other recommendations
 7. Install SSMS
