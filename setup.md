@@ -12,10 +12,12 @@ Steps listed so I don't forget anything
    4. Install Python
    5. Install nodejs
    6. Install ConsoleZ
-   7. Install jq
-   8. Install 7zip
-   9. Install git/bash
-   10. Install nuget (dotnet nuget does't have all the features)
+   7. Install Windows Terminal
+      1. import settings
+   8. Install jq
+   9.  Install 7zip
+   10. Install git/bash
+   11. Install nuget (dotnet nuget does't have all the features)
 4. Setup Git/Bash (can probably install with choco)
    1. Clone this utils repo
    2. Copy over ~/.bashrc
