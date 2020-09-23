@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+    sonarqube:
+        image: sonarqube
+        container_name: sonarqube
+        expose:
+            - 9000
+        ports:
+            - "127.0.0.1:9000:9000"
+        volumes:
+            #- sonarqube_conf:/opt/sonarqube/conf
+            - ./data:/opt/sonarqube/data
+            - ./logs:/opt/sonarqube/logs
+            # - sonarqube_extensions:/opt/sonarqube/extensions
+            # - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+
+# volumes:
+#     sonarqube_conf:
+#     sonarqube_data:
+#     sonarqube_extensions:
+#     sonarqube_bundled-plugins:
+        

@@ -17,7 +17,7 @@ Steps listed so I don't forget anything
    8. Install jq
    9.  Install 7zip
    10. Install git/bash
-   11. Install nuget (dotnet nuget does't have all the features)
+   11. Install nuget (dotnet nuget doesn't have all the features)
 4. Setup Git/Bash (can probably install with choco)
    1. Clone this utils repo
    2. Copy over ~/.bashrc
@@ -26,7 +26,7 @@ Steps listed so I don't forget anything
    5. Install git-num
    6. Add git-bash to ConsoleZ
    7. Make sure the thing doesn't use vim
-   8. Make sure we have curl (otherwise install it separately   )
+   8. Make sure we have curl (otherwise install it separately)
 5. Install VisualStudio
    1. Install resharper (if available)
    2. import settings
