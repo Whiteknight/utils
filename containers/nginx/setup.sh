@@ -1,0 +1,2 @@
+mkdir certs
+mkdir config
