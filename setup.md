@@ -11,13 +11,14 @@ Steps listed so I don't forget anything
    3. Install Ruby
    4. Install Python
    5. Install nodejs
-   6. Install ConsoleZ
-   7. Install Windows Terminal
+   6. Install Java JRE
+   7. Install ConsoleZ
+   8. Install Windows Terminal
       1. import settings
-   8. Install jq
-   9.  Install 7zip
-   10. Install git/bash
-   11. Install nuget (dotnet nuget doesn't have all the features)
+   9. Install jq
+   10. Install 7zip
+   11. Install git/bash
+   12. Install nuget (dotnet nuget doesn't have all the features)
 4. Setup Git/Bash (can probably install with choco)
    1. Clone this utils repo
    2. Copy over ~/.bashrc
@@ -37,6 +38,6 @@ Steps listed so I don't forget anything
    1. Add C#, Markdown extensions, plus any other recommendations
 7. Install SSMS
 8. Enable Hyper-V (if not already enabled)
-9.  Install Docker Desktop (Linux Containers)
+9. Install Docker Desktop (Linux Containers)
    1.  Consider setting up nuget-klondike, rabbitmq, redis, elasticsearch, sqlserver, postgres, etc. Whatever is needed
 10. 
