@@ -30,6 +30,7 @@
                     <Scope Name="View Designer" ID="{B968E165-98E0-41F0-8FBE-A8ED1D246A90}"/>
                     <Scope Name="XAML Editor" ID="{A4F9FF65-A78C-4650-866D-5069CC4127CF}"/>
                     <Scope Name="Microsoft SQL Server Data Tools, Table Designer" ID="{2366CF66-2394-4701-AFCA-37ED7FD41648}"/>
+                    <Scope Name="Terminal" ID="{D212F56B-C48A-434C-A121-1C5D80B59B9F}"/>
                     <Scope Name="Visual Basic Editor" ID="{2C015C70-C72C-11D0-88C3-00A0C9110049}"/>
                     <Scope Name="Global" ID="{5EFC7975-14BC-11CF-9B2B-00AA00573819}"/>
                     <Scope Name="HTML Editor" ID="{40D31677-CBC0-4297-A9EF-89D907823A98}"/>
@@ -73,170 +74,157 @@
                 <DefaultShortcuts/>
                 <ShortcutsScheme>Visual C# 2005</ShortcutsScheme>
                 <UserShortcuts>
-                    <RemoveShortcut Command="Edit.ViewTop" Scope="Text Editor">Ctrl+PgUp</RemoveShortcut>
-                    <RemoveShortcut Command="Window.PreviousTab" Scope="HTML Editor Source View">Ctrl+PgUp</RemoveShortcut>
-                    <RemoveShortcut Command="Window.PreviousTab" Scope="HTML Editor Design View">Ctrl+PgUp</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.ViewBottom" Scope="Text Editor">Ctrl+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="Debug.Autos.Search" Scope="Autos Window">Ctrl+E</RemoveShortcut>
-                    <RemoveShortcut Command="Debug.Locals.Search" Scope="Locals Window">Ctrl+E</RemoveShortcut>
-                    <RemoveShortcut Command="Debug.Watch.Search" Scope="Watch Windows">Ctrl+E</RemoveShortcut>
-                    <RemoveShortcut Command="Design.FitAll" Scope="XAML Designer">Ctrl+0</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.FormatSelection" Scope="Text Editor">Ctrl+E, F</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.FormatSelection" Scope="Text Editor">Ctrl+E, Ctrl+F</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.LineTranspose" Scope="Text Editor">Shift+Alt+T</RemoveShortcut>
-                    <RemoveShortcut Command="Format.ButtonRight" Scope="VC Dialog Editor">Ctrl+R</RemoveShortcut>
-                    <RemoveShortcut Command="Format.TestDialog" Scope="VC Dialog Editor">Ctrl+T</RemoveShortcut>
-                    <RemoveShortcut Command="Format.Underline" Scope="HTML Editor Design View">Ctrl+U</RemoveShortcut>
-                    <RemoveShortcut Command="Image.FilledRectangleTool" Scope="VC Image Editor">Ctrl+Shift+Alt+R</RemoveShortcut>
-                    <RemoveShortcut Command="Image.PreviousRightColor" Scope="VC Image Editor">Ctrl+Shift+[</RemoveShortcut>
-                    <RemoveShortcut Command="Image.ShowGrid" Scope="VC Image Editor">Ctrl+Alt+S</RemoveShortcut>
-                    <RemoveShortcut Command="Image.TextTool" Scope="VC Image Editor">Ctrl+T</RemoveShortcut>
-                    <RemoveShortcut Command="Image.UseSelectionasBrush" Scope="VC Image Editor">Ctrl+U</RemoveShortcut>
-                    <RemoveShortcut Command="Image.ZoomOut" Scope="VC Image Editor">Ctrl+Shift+,</RemoveShortcut>
-                    <RemoveShortcut Command="OtherContextMenus.FSIConsoleContext.StartDebugging" Scope="{DEE22B65-9761-4A26-8FB2-759B971D6DFC}">Ctrl+Alt+D</RemoveShortcut>
-                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.Down5" Scope="ADO.NET Entity Data Model Designer">Alt+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.ToBottom" Scope="ADO.NET Entity Data Model Designer">Alt+End</RemoveShortcut>
-                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.ToTop" Scope="ADO.NET Entity Data Model Designer">Alt+Home</RemoveShortcut>
-                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.Up5" Scope="ADO.NET Entity Data Model Designer">Alt+PgUp</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.CancelRetrievingData" Scope="View Designer">Ctrl+T</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.CancelRetrievingData" Scope="Query Designer">Ctrl+T</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.Criteria" Scope="View Designer">Ctrl+2</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.Criteria" Scope="Query Designer">Ctrl+2</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.Diagram" Scope="Query Designer">Ctrl+1</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.Diagram" Scope="View Designer">Ctrl+1</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.ExecuteSQL" Scope="View Designer">Ctrl+R</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.ExecuteSQL" Scope="Query Designer">Ctrl+R</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.Results" Scope="View Designer">Ctrl+4</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.Results" Scope="Query Designer">Ctrl+4</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.SQL" Scope="View Designer">Ctrl+3</RemoveShortcut>
-                    <RemoveShortcut Command="QueryDesigner.SQL" Scope="Query Designer">Ctrl+3</RemoveShortcut>
-                    <RemoveShortcut Command="Resources.Audio" Scope="Managed Resources Editor">Ctrl+4</RemoveShortcut>
-                    <RemoveShortcut Command="Resources.Files" Scope="Managed Resources Editor">Ctrl+5</RemoveShortcut>
-                    <RemoveShortcut Command="Resources.Icons" Scope="Managed Resources Editor">Ctrl+3</RemoveShortcut>
-                    <RemoveShortcut Command="Resources.Images" Scope="Managed Resources Editor">Ctrl+2</RemoveShortcut>
-                    <RemoveShortcut Command="Resources.Other" Scope="Managed Resources Editor">Ctrl+6</RemoveShortcut>
-                    <RemoveShortcut Command="Resources.Strings" Scope="Managed Resources Editor">Ctrl+1</RemoveShortcut>
-                    <RemoveShortcut Command="SQL.ExecuteWithDebugger" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Alt+F5</RemoveShortcut>
-                    <RemoveShortcut Command="SQL.ExpandWildcards" Scope="Microsoft SQL Server Data Tools, Table Designer">Ctrl+R, E</RemoveShortcut>
-                    <RemoveShortcut Command="SQL.ExpandWildcards" Scope="Microsoft SQL Server Data Tools, Table Designer">Ctrl+R, Ctrl+E</RemoveShortcut>
-                    <RemoveShortcut Command="SQL.ExpandWildcards" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Ctrl+R, E</RemoveShortcut>
-                    <RemoveShortcut Command="SQL.ExpandWildcards" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Ctrl+R, Ctrl+E</RemoveShortcut>
-                    <RemoveShortcut Command="SQL.MovetoSchema" Scope="Microsoft SQL Server Data Tools, Table Designer">Ctrl+R, Ctrl+M</RemoveShortcut>
-                    <RemoveShortcut Command="SQL.MovetoSchema" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Ctrl+R, Ctrl+M</RemoveShortcut>
-                    <RemoveShortcut Command="SQL.MovetoSchema" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Ctrl+R, M</RemoveShortcut>
-                    <RemoveShortcut Command="SQL.MovetoSchema" Scope="Microsoft SQL Server Data Tools, Table Designer">Ctrl+R, M</RemoveShortcut>
                     <RemoveShortcut Command="SQL.QueryResultsNewRow" Scope="Query Results">Alt+End</RemoveShortcut>
-                    <RemoveShortcut Command="Team.NewLinkedWorkItem" Scope="Work Item Query View">Shift+Alt+L</RemoveShortcut>
-                    <RemoveShortcut Command="Team.NewLinkedWorkItem" Scope="Work Item Editor">Shift+Alt+L</RemoveShortcut>
-                    <RemoveShortcut Command="Team.NewLinkedWorkItem" Scope="Work Item Results View">Shift+Alt+L</RemoveShortcut>
-                    <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerNavigation" Scope="Team Explorer">Alt+Home</RemoveShortcut>
-                    <RemoveShortcut Command="TeamFoundationContextMenus.MyWorkPageInProgress.TfsContextMyWorkPageNewLinkedWI" Scope="Team Explorer">Shift+Alt+L</RemoveShortcut>
-                    <RemoveShortcut Command="TSqlEditorDatabaseCombo" Scope="Microsoft SQL Server Data Tools, T-SQL PDW Editor">Shift+Alt+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="TSqlEditorDatabaseCombo" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Shift+Alt+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="View.EntityDataModelBrowser" Scope="ADO.NET Entity Data Model Designer">Ctrl+1</RemoveShortcut>
-                    <RemoveShortcut Command="View.EntityDataModelMappingDetails" Scope="ADO.NET Entity Data Model Designer">Ctrl+2</RemoveShortcut>
+                    <RemoveShortcut Command="SQL.ExpandWildcards" Scope="Microsoft SQL Server Data Tools, Table Designer">Ctrl+R, Ctrl+E</RemoveShortcut>
+                    <RemoveShortcut Command="SQL.MovetoSchema" Scope="Microsoft SQL Server Data Tools, Table Designer">Ctrl+R, Ctrl+M</RemoveShortcut>
+                    <RemoveShortcut Command="SQL.ExpandWildcards" Scope="Microsoft SQL Server Data Tools, Table Designer">Ctrl+R, E</RemoveShortcut>
+                    <RemoveShortcut Command="SQL.MovetoSchema" Scope="Microsoft SQL Server Data Tools, Table Designer">Ctrl+R, M</RemoveShortcut>
                     <RemoveShortcut Command="ViewFileInScriptPanel" Scope="Microsoft SQL Server Data Tools, Table Designer">Shift+Alt+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="XML.StartXSLTDebugging" Scope="XML (Text) Editor">Alt+F5</RemoveShortcut>
-                    <RemoveShortcut Command="XML.StartXSLTWithoutDebugging" Scope="XML (Text) Editor">Ctrl+Alt+F5</RemoveShortcut>
-                    <RemoveShortcut Command="XsdDesigner.ShowContentModelView" Scope="XML Schema Designer">Ctrl+2</RemoveShortcut>
-                    <RemoveShortcut Command="XsdDesigner.ShowGraphView" Scope="XML Schema Designer">Ctrl+3</RemoveShortcut>
-                    <RemoveShortcut Command="XsdDesigner.ShowStartView" Scope="XML Schema Designer">Ctrl+1</RemoveShortcut>
-                    <RemoveShortcut Command="GraphView.BottomtoTop" Scope="XML Schema Designer">Alt+Up Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="GraphView.ToptoBottom" Scope="XML Schema Designer">Alt+Down Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="View.NextView" Scope="HTML Editor Source View">Ctrl+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="View.NextView" Scope="HTML Editor Design View">Ctrl+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.Up" Scope="ADO.NET Entity Data Model Designer">Alt+Up Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.Down" Scope="ADO.NET Entity Data Model Designer">Alt+Down Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.CharRightExtendColumn" Scope="Text Editor">Shift+Alt+Right Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.CharLeftExtendColumn" Scope="Text Editor">Shift+Alt+Left Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerPreviousSectionContent" Scope="Team Explorer">Alt+Up Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerNextSectionContent" Scope="Team Explorer">Alt+Down Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Ctrl+[, S</RemoveShortcut>
-                    <RemoveShortcut Command="SolutionExplorer.PendingChangesFilter" Scope="Global">Ctrl+[, P</RemoveShortcut>
-                    <RemoveShortcut Command="SolutionExplorer.OpenFilesFilter" Scope="Global">Ctrl+[, O</RemoveShortcut>
-                    <RemoveShortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Ctrl+[, Ctrl+S</RemoveShortcut>
-                    <RemoveShortcut Command="SolutionExplorer.PendingChangesFilter" Scope="Global">Ctrl+[, Ctrl+P</RemoveShortcut>
-                    <RemoveShortcut Command="SolutionExplorer.OpenFilesFilter" Scope="Global">Ctrl+[, Ctrl+O</RemoveShortcut>
-                    <RemoveShortcut Command="Window.AddTabtoSelection" Scope="Global">Ctrl+Shift+Alt+Space</RemoveShortcut>
-                    <RemoveShortcut Command="Window.NextDocumentWindow" Scope="Global">Ctrl+F6</RemoveShortcut>
-                    <RemoveShortcut Command="ProjectandSolutionContextMenus.Item.MoveUp" Scope="Solution Explorer">Alt+Up Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="ProjectandSolutionContextMenus.Item.MoveDown" Scope="Solution Explorer">Alt+Down Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="InteractiveConsole.HistoryPrevious" Scope="Interactive Window">Alt+Up Arrow</RemoveShortcut>
                     <RemoveShortcut Command="InteractiveConsole.HistoryNext" Scope="Interactive Window">Alt+Down Arrow</RemoveShortcut>
-                    <Shortcut Command="Window.CloseDocumentWindow" Scope="Global">Ctrl+W</Shortcut>
-                    <Shortcut Command="Window.PreviousTab" Scope="Global">Ctrl+PgUp</Shortcut>
-                    <Shortcut Command="Window.NextTab" Scope="Global">Ctrl+PgDn</Shortcut>
-                    <Shortcut Command="Project.AddClass" Scope="Global">Ctrl+Shift+C</Shortcut>
-                    <RemoveShortcut Command="View.Publish" Scope="Global">Ctrl+Alt+F9</RemoveShortcut>
-                    <RemoveShortcut Command="View.TaskRunnerExplorer" Scope="Global">Ctrl+Alt+Bkspce</RemoveShortcut>
-                    <RemoveShortcut Command="OtherContextMenus.BrowserLink.RefreshLinkedBrowsers" Scope="Global">Ctrl+Alt+Enter</RemoveShortcut>
-                    <RemoveShortcut Command="View.ServerExplorer" Scope="Global">Ctrl+Alt+S</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.LineOpenAbove" Scope="Text Editor">Ctrl+Enter</RemoveShortcut>
-                    <RemoveShortcut Command="EditorContextMenus.CodeWindow.Execute" Scope="Global">Ctrl+Alt+F5</RemoveShortcut>
-                    <RemoveShortcut Command="View.PopBrowseContext" Scope="Global">Ctrl+Shift+8</RemoveShortcut>
-                    <RemoveShortcut Command="View.ForwardBrowseContext" Scope="Global">Ctrl+Shift+7</RemoveShortcut>
-                    <RemoveShortcut Command="View.BrowsePrevious" Scope="Global">Ctrl+Shift+2</RemoveShortcut>
-                    <RemoveShortcut Command="View.BrowseNext" Scope="Global">Ctrl+Shift+1</RemoveShortcut>
-                    <RemoveShortcut Command="Debug.LocationToolbar.ToggleFlaggedThreads" Scope="Global">Ctrl+9</RemoveShortcut>
-                    <RemoveShortcut Command="Debug.LocationToolbar.ToggleCurrentThreadFlaggedState" Scope="Global">Ctrl+8</RemoveShortcut>
-                    <RemoveShortcut Command="Debug.LocationToolbar.StackFrameCombo" Scope="Global">Ctrl+7</RemoveShortcut>
-                    <RemoveShortcut Command="Debug.LocationToolbar.ThreadCombo" Scope="Global">Ctrl+6</RemoveShortcut>
+                    <RemoveShortcut Command="InteractiveConsole.HistoryPrevious" Scope="Interactive Window">Alt+Up Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="ProjectandSolutionContextMenus.Item.MoveDown" Scope="Solution Explorer">Alt+Down Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="ProjectandSolutionContextMenus.Item.MoveUp" Scope="Solution Explorer">Alt+Up Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="Team.NewLinkedWorkItem" Scope="Work Item Editor">Shift+Alt+L</RemoveShortcut>
+                    <RemoveShortcut Command="Team.Git.GoToParent" Scope="Global">Alt+PgDn</RemoveShortcut>
+                    <RemoveShortcut Command="Team.Git.GoToChild" Scope="Global">Alt+PgUp</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.GoToMember" Scope="Global">Alt+\</RemoveShortcut>
+                    <RemoveShortcut Command="Window.ActivateWindowSearch" Scope="Global">Alt+`</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.NavigateTo" Scope="Global">Ctrl+,</RemoveShortcut>
                     <RemoveShortcut Command="Debug.LocationToolbar.ProcessCombo" Scope="Global">Ctrl+5</RemoveShortcut>
-                    <RemoveShortcut Command="View.QuickActions" Scope="Text Editor">Alt+Enter</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.UncommentSelection" Scope="Text Editor">Ctrl+E, Ctrl+U</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.UncommentSelection" Scope="Text Editor">Ctrl+E, U</RemoveShortcut>
-                    <RemoveShortcut Command="View.DocumentOutline" Scope="Global">Ctrl+Alt+T</RemoveShortcut>
-                    <RemoveShortcut Command="Debug.Modules" Scope="Global">Ctrl+Alt+U</RemoveShortcut>
+                    <RemoveShortcut Command="Debug.LocationToolbar.ThreadCombo" Scope="Global">Ctrl+6</RemoveShortcut>
+                    <RemoveShortcut Command="Debug.LocationToolbar.StackFrameCombo" Scope="Global">Ctrl+7</RemoveShortcut>
+                    <RemoveShortcut Command="Debug.LocationToolbar.ToggleCurrentThreadFlaggedState" Scope="Global">Ctrl+8</RemoveShortcut>
+                    <RemoveShortcut Command="Debug.LocationToolbar.ToggleFlaggedThreads" Scope="Global">Ctrl+9</RemoveShortcut>
+                    <RemoveShortcut Command="View.TaskRunnerExplorer" Scope="Global">Ctrl+Alt+Bkspce</RemoveShortcut>
                     <RemoveShortcut Command="Debug.Disassembly" Scope="Global">Ctrl+Alt+D</RemoveShortcut>
+                    <RemoveShortcut Command="OtherContextMenus.BrowserLink.RefreshLinkedBrowsers" Scope="Global">Ctrl+Alt+Enter</RemoveShortcut>
                     <RemoveShortcut Command="View.F#Interactive" Scope="Global">Ctrl+Alt+F</RemoveShortcut>
                     <RemoveShortcut Command="View.FindSymbolResults" Scope="Global">Ctrl+Alt+F12</RemoveShortcut>
-                    <RemoveShortcut Command="TestExplorer.DebugLastRun" Scope="Global">Ctrl+R, D</RemoveShortcut>
-                    <RemoveShortcut Command="Window.PreviousTab" Scope="Global">Ctrl+Alt+PgUp</RemoveShortcut>
+                    <RemoveShortcut Command="EditorContextMenus.CodeWindow.Execute" Scope="Global">Ctrl+Alt+F5</RemoveShortcut>
+                    <RemoveShortcut Command="View.PendingChanges" Scope="Global">Ctrl+Alt+F7</RemoveShortcut>
+                    <RemoveShortcut Command="View.Publish" Scope="Global">Ctrl+Alt+F9</RemoveShortcut>
+                    <RemoveShortcut Command="Project.Override" Scope="Global">Ctrl+Alt+Ins</RemoveShortcut>
                     <RemoveShortcut Command="Window.NextTab" Scope="Global">Ctrl+Alt+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="Format.ResetAll" Scope="XAML Designer">Ctrl+Shift+R</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.ShowNavigateMenu" Scope="Text Editor">Alt+`</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.ShowClipboardHistory" Scope="Text Editor">Ctrl+Shift+V</RemoveShortcut>
-                    <RemoveShortcut Command="Window.ActivateWindowSearch" Scope="Global">Alt+`</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.WordNextExtendColumn" Scope="Text Editor">Ctrl+Shift+Alt+Right Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="Refactor.ReorderParameters" Scope="Global">Ctrl+R, O</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.WordPreviousExtendColumn" Scope="Text Editor">Ctrl+Shift+Alt+Left Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="Window.PreviousTab" Scope="Global">Ctrl+Alt+PgUp</RemoveShortcut>
+                    <RemoveShortcut Command="View.ServerExplorer" Scope="Global">Ctrl+Alt+S</RemoveShortcut>
+                    <RemoveShortcut Command="View.DocumentOutline" Scope="Global">Ctrl+Alt+T</RemoveShortcut>
+                    <RemoveShortcut Command="Debug.Modules" Scope="Global">Ctrl+Alt+U</RemoveShortcut>
+                    <RemoveShortcut Command="View.CodeCoverageResults" Scope="Global">Ctrl+E, C</RemoveShortcut>
+                    <RemoveShortcut Command="View.UnpublishedCommits" Scope="Global">Ctrl+E, Ctrl+C</RemoveShortcut>
+                    <RemoveShortcut Command="View.ShowTaskStatusCenter" Scope="Global">Ctrl+E, Ctrl+T</RemoveShortcut>
+                    <RemoveShortcut Command="TestExplorer.ShowTestExplorer" Scope="Global">Ctrl+E, T</RemoveShortcut>
+                    <RemoveShortcut Command="Window.NextDocumentWindow" Scope="Global">Ctrl+F6</RemoveShortcut>
+                    <Shortcut Command="Window.NextTab" Scope="Global">Ctrl+PgDn</Shortcut>
+                    <Shortcut Command="Window.PreviousTab" Scope="Global">Ctrl+PgUp</Shortcut>
+                    <RemoveShortcut Command="Refactor.EncapsulateField" Scope="Global">Ctrl+R, Ctrl+E</RemoveShortcut>
+                    <RemoveShortcut Command="Refactor.ExtractMethod" Scope="Global">Ctrl+R, Ctrl+M</RemoveShortcut>
                     <RemoveShortcut Command="Refactor.ReorderParameters" Scope="Global">Ctrl+R, Ctrl+O</RemoveShortcut>
+                    <RemoveShortcut Command="TestExplorer.DebugLastRun" Scope="Global">Ctrl+R, D</RemoveShortcut>
+                    <RemoveShortcut Command="Refactor.EncapsulateField" Scope="Global">Ctrl+R, E</RemoveShortcut>
+                    <RemoveShortcut Command="Refactor.ExtractMethod" Scope="Global">Ctrl+R, M</RemoveShortcut>
+                    <RemoveShortcut Command="Refactor.ReorderParameters" Scope="Global">Ctrl+R, O</RemoveShortcut>
+                    <RemoveShortcut Command="View.ZoomOut" Scope="Global">Ctrl+Shift+,</RemoveShortcut>
+                    <RemoveShortcut Command="View.BrowseNext" Scope="Global">Ctrl+Shift+1</RemoveShortcut>
+                    <RemoveShortcut Command="View.BrowsePrevious" Scope="Global">Ctrl+Shift+2</RemoveShortcut>
+                    <RemoveShortcut Command="View.ForwardBrowseContext" Scope="Global">Ctrl+Shift+7</RemoveShortcut>
+                    <RemoveShortcut Command="View.PopBrowseContext" Scope="Global">Ctrl+Shift+8</RemoveShortcut>
+                    <RemoveShortcut Command="Project.AddNewItem" Scope="Global">Ctrl+Shift+A</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.GoToLastEditLocation" Scope="Global">Ctrl+Shift+Bkspce</RemoveShortcut>
+                    <Shortcut Command="Project.AddClass" Scope="Global">Ctrl+Shift+C</Shortcut>
+                    <RemoveShortcut Command="Edit.GoToFile" Scope="Global">Ctrl+Shift+T</RemoveShortcut>
+                    <Shortcut Command="Window.PreviousTab" Scope="Global">Ctrl+Shift+Tab</Shortcut>
+                    <RemoveShortcut Command="Edit.NavigateTo" Scope="Global">Ctrl+T</RemoveShortcut>
+                    <Shortcut Command="Window.NextTab" Scope="Global">Ctrl+Tab</Shortcut>
+                    <Shortcut Command="Window.CloseDocumentWindow" Scope="Global">Ctrl+W</Shortcut>
+                    <RemoveShortcut Command="SolutionExplorer.OpenFilesFilter" Scope="Global">Ctrl+[, Ctrl+O</RemoveShortcut>
+                    <RemoveShortcut Command="SolutionExplorer.PendingChangesFilter" Scope="Global">Ctrl+[, Ctrl+P</RemoveShortcut>
+                    <RemoveShortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Ctrl+[, Ctrl+S</RemoveShortcut>
+                    <RemoveShortcut Command="SolutionExplorer.OpenFilesFilter" Scope="Global">Ctrl+[, O</RemoveShortcut>
+                    <RemoveShortcut Command="SolutionExplorer.PendingChangesFilter" Scope="Global">Ctrl+[, P</RemoveShortcut>
+                    <RemoveShortcut Command="SolutionExplorer.SyncWithActiveDocument" Scope="Global">Ctrl+[, S</RemoveShortcut>
+                    <RemoveShortcut Command="View.Terminal" Scope="Global">Ctrl+`</RemoveShortcut>
                     <RemoveShortcut Command="Debug.StepIntoSpecific" Scope="Global">Shift+Alt+F11</RemoveShortcut>
                     <RemoveShortcut Command="Edit.QuickFindSymbol" Scope="Global">Shift+Alt+F12</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.NavigateTo" Scope="Global">Ctrl+T</RemoveShortcut>
-                    <RemoveShortcut Command="View.PendingChanges" Scope="Global">Ctrl+Alt+F7</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.NavigateTo" Scope="Global">Ctrl+,</RemoveShortcut>
-                    <RemoveShortcut Command="MoveLeftEdgetotheleft" Scope="XAML Designer">Ctrl+Shift+,</RemoveShortcut>
-                    <RemoveShortcut Command="View.ZoomOut" Scope="Global">Ctrl+Shift+,</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.MoveSelectedLinesUp" Scope="Text Editor">Alt+Up Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="Team.Git.GoToChild" Scope="Global">Alt+PgUp</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.GoToPreviousIssueinFile" Scope="Text Editor">Alt+PgUp</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.MoveSelectedLinesDown" Scope="Text Editor">Alt+Down Arrow</RemoveShortcut>
-                    <RemoveShortcut Command="Team.Git.GoToParent" Scope="Global">Alt+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.GoToNextIssueinFile" Scope="Text Editor">Alt+PgDn</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.GoToLastEditLocation" Scope="Global">Ctrl+Shift+Bkspce</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.GoToMember" Scope="Global">Alt+\</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.GoToFile" Scope="Global">Ctrl+Shift+T</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.GoToBase" Scope="Text Editor">Alt+Home</RemoveShortcut>
-                    <RemoveShortcut Command="Project.Override" Scope="Global">Ctrl+Alt+Ins</RemoveShortcut>
-                    <RemoveShortcut Command="Project.AddNewItem" Scope="Global">Ctrl+Shift+A</RemoveShortcut>
                     <RemoveShortcut Command="Edit.FindAllReferences" Scope="Global">Shift+F12</RemoveShortcut>
-                    <RemoveShortcut Command="TestExplorer.ShowTestExplorer" Scope="Global">Ctrl+E, T</RemoveShortcut>
-                    <RemoveShortcut Command="Refactor.ExtractMethod" Scope="Global">Ctrl+R, Ctrl+M</RemoveShortcut>
-                    <RemoveShortcut Command="Refactor.ExtractMethod" Scope="Global">Ctrl+R, M</RemoveShortcut>
-                    <RemoveShortcut Command="View.ShowTaskStatusCenter" Scope="Global">Ctrl+E, Ctrl+T</RemoveShortcut>
-                    <RemoveShortcut Command="Refactor.EncapsulateField" Scope="Global">Ctrl+R, Ctrl+E</RemoveShortcut>
-                    <RemoveShortcut Command="Refactor.EncapsulateField" Scope="Global">Ctrl+R, E</RemoveShortcut>
-                    <RemoveShortcut Command="Edit.ToggleCompletionMode" Scope="Text Editor">Ctrl+Alt+Space</RemoveShortcut>
+                    <RemoveShortcut Command="Team.NewLinkedWorkItem" Scope="Work Item Results View">Shift+Alt+L</RemoveShortcut>
+                    <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerNextSectionContent" Scope="Team Explorer">Alt+Down Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerNavigation" Scope="Team Explorer">Alt+Home</RemoveShortcut>
+                    <RemoveShortcut Command="TeamFoundationContextMenus.Commands.GoToTeamExplorerPreviousSectionContent" Scope="Team Explorer">Alt+Up Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="TeamFoundationContextMenus.MyWorkPageInProgress.TfsContextMyWorkPageNewLinkedWI" Scope="Team Explorer">Shift+Alt+L</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.MoveSelectedLinesDown" Scope="Text Editor">Alt+Down Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="View.QuickActions" Scope="Text Editor">Alt+Enter</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.GoToBase" Scope="Text Editor">Alt+Home</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.GoToNextIssueinFile" Scope="Text Editor">Alt+PgDn</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.GoToPreviousIssueinFile" Scope="Text Editor">Alt+PgUp</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.MoveSelectedLinesUp" Scope="Text Editor">Alt+Up Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.ShowNavigateMenu" Scope="Text Editor">Alt+`</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.ToggleIntelliSensesuggestioncompletionmode" Scope="Text Editor">Ctrl+Alt+Space</RemoveShortcut>
                     <RemoveShortcut Command="Edit.CommentSelection" Scope="Text Editor">Ctrl+E, C</RemoveShortcut>
-                    <RemoveShortcut Command="View.CodeCoverageResults" Scope="Global">Ctrl+E, C</RemoveShortcut>
                     <RemoveShortcut Command="Edit.CommentSelection" Scope="Text Editor">Ctrl+E, Ctrl+C</RemoveShortcut>
-                    <RemoveShortcut Command="View.UnpublishedCommits" Scope="Global">Ctrl+E, Ctrl+C</RemoveShortcut>
-                    <RemoveShortcut Command="View.Terminal" Scope="Global">Ctrl+`</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.FormatSelection" Scope="Text Editor">Ctrl+E, Ctrl+F</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.UncommentSelection" Scope="Text Editor">Ctrl+E, Ctrl+U</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.FormatSelection" Scope="Text Editor">Ctrl+E, F</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.UncommentSelection" Scope="Text Editor">Ctrl+E, U</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.LineOpenAbove" Scope="Text Editor">Ctrl+Enter</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.ViewBottom" Scope="Text Editor">Ctrl+PgDn</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.ViewTop" Scope="Text Editor">Ctrl+PgUp</RemoveShortcut>
                     <RemoveShortcut Command="Edit.ToggleBlockComment" Scope="Text Editor">Ctrl+Shift+/</RemoveShortcut>
-                    <Shortcut Command="Window.PreviousTab" Scope="Global">Ctrl+Shift+Tab</Shortcut>
-                    <Shortcut Command="Window.NextTab" Scope="Global">Ctrl+Tab</Shortcut>
-                    <RemoveShortcut Command="EditorContextMenus.CodeWindow.QuickActionsForPosition" Scope="Global">Ctrl+.</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.WordPreviousExtendColumn" Scope="Text Editor">Ctrl+Shift+Alt+Left Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.WordNextExtendColumn" Scope="Text Editor">Ctrl+Shift+Alt+Right Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.ShowClipboardHistory" Scope="Text Editor">Ctrl+Shift+V</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.CharLeftExtendColumn" Scope="Text Editor">Shift+Alt+Left Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.CharRightExtendColumn" Scope="Text Editor">Shift+Alt+Right Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="Edit.LineTranspose" Scope="Text Editor">Shift+Alt+T</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.Diagram" Scope="Query Designer">Ctrl+1</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.Criteria" Scope="Query Designer">Ctrl+2</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.SQL" Scope="Query Designer">Ctrl+3</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.Results" Scope="Query Designer">Ctrl+4</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.ExecuteSQL" Scope="Query Designer">Ctrl+R</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.CancelRetrievingData" Scope="Query Designer">Ctrl+T</RemoveShortcut>
+                    <RemoveShortcut Command="Team.NewLinkedWorkItem" Scope="Work Item Query View">Shift+Alt+L</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.Diagram" Scope="View Designer">Ctrl+1</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.Criteria" Scope="View Designer">Ctrl+2</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.SQL" Scope="View Designer">Ctrl+3</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.Results" Scope="View Designer">Ctrl+4</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.ExecuteSQL" Scope="View Designer">Ctrl+R</RemoveShortcut>
+                    <RemoveShortcut Command="QueryDesigner.CancelRetrievingData" Scope="View Designer">Ctrl+T</RemoveShortcut>
+                    <RemoveShortcut Command="TSqlEditorDatabaseCombo" Scope="Microsoft SQL Server Data Tools, T-SQL PDW Editor">Shift+Alt+PgDn</RemoveShortcut>
+                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.Down" Scope="ADO.NET Entity Data Model Designer">Alt+Down Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.ToBottom" Scope="ADO.NET Entity Data Model Designer">Alt+End</RemoveShortcut>
+                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.ToTop" Scope="ADO.NET Entity Data Model Designer">Alt+Home</RemoveShortcut>
+                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.Down5" Scope="ADO.NET Entity Data Model Designer">Alt+PgDn</RemoveShortcut>
+                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.Up5" Scope="ADO.NET Entity Data Model Designer">Alt+PgUp</RemoveShortcut>
+                    <RemoveShortcut Command="OtherContextMenus.MicrosoftDataEntityDesignContext.MoveProperties.Up" Scope="ADO.NET Entity Data Model Designer">Alt+Up Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="View.EntityDataModelBrowser" Scope="ADO.NET Entity Data Model Designer">Ctrl+1</RemoveShortcut>
+                    <RemoveShortcut Command="View.EntityDataModelMappingDetails" Scope="ADO.NET Entity Data Model Designer">Ctrl+2</RemoveShortcut>
+                    <RemoveShortcut Command="View.NextView" Scope="HTML Editor Design View">Ctrl+PgDn</RemoveShortcut>
+                    <RemoveShortcut Command="Window.PreviousTab" Scope="HTML Editor Design View">Ctrl+PgUp</RemoveShortcut>
+                    <RemoveShortcut Command="Format.Underline" Scope="HTML Editor Design View">Ctrl+U</RemoveShortcut>
+                    <RemoveShortcut Command="View.NextView" Scope="HTML Editor Source View">Ctrl+PgDn</RemoveShortcut>
+                    <RemoveShortcut Command="Window.PreviousTab" Scope="HTML Editor Source View">Ctrl+PgUp</RemoveShortcut>
+                    <RemoveShortcut Command="SQL.ExecuteWithDebugger" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Alt+F5</RemoveShortcut>
+                    <RemoveShortcut Command="SQL.ExpandWildcards" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Ctrl+R, Ctrl+E</RemoveShortcut>
+                    <RemoveShortcut Command="SQL.MovetoSchema" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Ctrl+R, Ctrl+M</RemoveShortcut>
+                    <RemoveShortcut Command="SQL.ExpandWildcards" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Ctrl+R, E</RemoveShortcut>
+                    <RemoveShortcut Command="SQL.MovetoSchema" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Ctrl+R, M</RemoveShortcut>
+                    <RemoveShortcut Command="TSqlEditorDatabaseCombo" Scope="Microsoft SQL Server Data Tools, T-SQL Editor">Shift+Alt+PgDn</RemoveShortcut>
+                    <RemoveShortcut Command="OtherContextMenus.FSIConsoleContext.StartDebugging" Scope="{DEE22B65-9761-4A26-8FB2-759B971D6DFC}">Ctrl+Alt+D</RemoveShortcut>
+                    <RemoveShortcut Command="GraphView.ToptoBottom" Scope="XML Schema Designer">Alt+Down Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="GraphView.BottomtoTop" Scope="XML Schema Designer">Alt+Up Arrow</RemoveShortcut>
+                    <RemoveShortcut Command="XsdDesigner.ShowStartView" Scope="XML Schema Designer">Ctrl+1</RemoveShortcut>
+                    <RemoveShortcut Command="XsdDesigner.ShowContentModelView" Scope="XML Schema Designer">Ctrl+2</RemoveShortcut>
+                    <RemoveShortcut Command="XsdDesigner.ShowGraphView" Scope="XML Schema Designer">Ctrl+3</RemoveShortcut>
+                    <RemoveShortcut Command="Design.FitAll" Scope="XAML Designer">Ctrl+0</RemoveShortcut>
+                    <RemoveShortcut Command="MoveLeftEdgetotheleft" Scope="XAML Designer">Ctrl+Shift+,</RemoveShortcut>
+                    <RemoveShortcut Command="Format.ResetAll" Scope="XAML Designer">Ctrl+Shift+R</RemoveShortcut>
+                    <RemoveShortcut Command="XML.StartXSLTDebugging" Scope="XML (Text) Editor">Alt+F5</RemoveShortcut>
+                    <RemoveShortcut Command="XML.StartXSLTWithoutDebugging" Scope="XML (Text) Editor">Ctrl+Alt+F5</RemoveShortcut>
+                    <RemoveShortcut Command="Resources.Strings" Scope="Managed Resources Editor">Ctrl+1</RemoveShortcut>
+                    <RemoveShortcut Command="Resources.Images" Scope="Managed Resources Editor">Ctrl+2</RemoveShortcut>
+                    <RemoveShortcut Command="Resources.Icons" Scope="Managed Resources Editor">Ctrl+3</RemoveShortcut>
+                    <RemoveShortcut Command="Resources.Audio" Scope="Managed Resources Editor">Ctrl+4</RemoveShortcut>
+                    <RemoveShortcut Command="Resources.Files" Scope="Managed Resources Editor">Ctrl+5</RemoveShortcut>
+                    <RemoveShortcut Command="Resources.Other" Scope="Managed Resources Editor">Ctrl+6</RemoveShortcut>
                 </UserShortcuts>
             </KeyboardShortcuts>
         </Category>
