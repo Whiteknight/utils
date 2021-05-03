@@ -2,14 +2,19 @@
 pg stonefruit
 
 # This key is for a local instance of SonarQube, and needs to be recreated for each new instance
-SONARQUBE_STONEFRUIT_KEY=8d8040a272c0bbeb6057b1b736c41b3ba55d1e47
+SONARQUBE_STONEFRUIT_KEY=820e8d31598739d079e238b5063afe8747cf5c13
 
 # Path to the OpenCover.Console.exe executable
 # TODO: see if we can find a way to make this a relative path for a more repeatable process
-OPENCOVER_EXE=/c/Users/awhitworth/.nuget/packages/opencover/4.7.922/tools/OpenCover.Console.exe
+OPENCOVER_EXE=$HOMEPATH/.nuget/packages/opencover/4.7.922/tools/OpenCover.Console.exe
+
+# URL to Sonarqube. If nginx is working we can use the first. "if"
+SONARQUBE_URL=http://sonarqube.local
+#SONARQUBE_URL=http://localhost:9000
 
 dotnet sonarscanner begin \
     -d:sonar.login=$SONARQUBE_STONEFRUIT_KEY \
+    -d:sonar.host.url="$SONARQUBE_URL" \
     -k:StoneFruit \
     -d:"sonar.cs.opencover.reportsPaths=coverage.xml"
 
