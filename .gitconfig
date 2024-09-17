@@ -9,6 +9,7 @@
 	default = simple
 [alias]
     tree = log --graph --all --format='%C(auto)%h% %C(auto)%d %aN %Cgreen%aD%n%s%n'
+    treeb = log --graph --format='%C(auto)%h% %C(auto)%d %aN %Cgreen%aD%n%s%n'
     treev = log --graph --decorate --all
     undo = checkout --
     lastdiff = diff HEAD^..HEAD
