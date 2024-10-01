@@ -10,12 +10,12 @@ Steps listed so I don't forget anything
    2. Install ag ("silver surfer")
    3. Install Ruby
    4. Install Python
-   5. Install nodejs
+   5. Install nvm -> nodejs
    6. Install Java JRE
    7. Install ConsoleZ
    8. Install Windows Terminal
       1. import settings
-   9. Install jq
+   9.  Install jq
    10. Install 7zip
    11. Install git/bash
    12. Install nuget (dotnet nuget doesn't have all the features)
