@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Opensearch/ElasticSearch CLI script
+# Allows you to use a short command like GET <path> instead of a longer curl invocation
+
+function _callcurl() {
+    method=$1
+    url=$2
+    curl -s -X $method http://localhost:9200/$url | jq -r -R '. as $line | try (fromjson) catch $line'
+}
+
+function _callcurlpayload() {
+    method=$1
+    url=$2
+    payload=$3
+    curl -s -H "Content-Type: application/json" -X $method --data "$payload" http://localhost:9200/$url | jq -r -R '. as $line | try (fromjson) catch $line'
+}
+
+if [ $# -eq 1 ]; then
+    _callcurl 'GET' "$1"
+elif [ $# -eq 2 ]; then
+    if [ -p /dev/stdin ]; then
+        payload="$(cat)"
+        _callcurlpayload $1 "$2" "$payload"
+    else
+        _callcurl $1 "$2"
+    fi
+elif [ $# -eq 3 ]; then
+    _callcurlpayload $1 "$2" "$3"
+else
+    echo 'Invalid number of parameters'
+    exit 1
+fi
+
