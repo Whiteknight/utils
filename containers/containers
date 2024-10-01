@@ -1,0 +1,3 @@
+#~/bin/bash
+
+docker container ls -a --format "table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}"
