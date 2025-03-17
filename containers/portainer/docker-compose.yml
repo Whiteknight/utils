@@ -1,0 +1,10 @@
+version: "3.2"
+services:
+    portainer:
+        image: portainer/portainer
+        container_name: portainer
+        ports:
+            - 9002:9000
+        volumes:
+            - /c/containers/portainer/data:/data
+            - /var/run/docker.sock:/var/run/docker.sock

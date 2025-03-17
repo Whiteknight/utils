@@ -1,0 +1,16 @@
+version: "3.2"
+services:
+    nuget-klondike:
+        container_name: nuget
+        image: didstopia/nuget-klondike:latest
+        ports:
+            - "8080:8080"
+        volumes:
+            - nuget-volume:/data
+            #- /c/containers/klondike/data:/data
+            #- /c/containers/klondike/settings.config:/app/settings.config
+
+volumes:
+    nuget-volume:
+        driver: local
+    

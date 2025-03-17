@@ -32,4 +32,21 @@ You can log out of the client by typing `\q`
 
 **NOTICE**: Every command you type must end with a `;`. If the command does not end with `;` it will not be sent to the server, and will instead be included with the batch next time you do type `;`.
 
+## Run pgAdmin4 in Container
+
+    docker run -d \
+        --name pgadmin \
+        -e PGADMIN_DEFAULT_PASSWORD=strongPassword123! \
+        -e PGADMIN_DEFAULT_EMAIL=awhitworth@hc1.com \
+        -p5050:80 \
+        dpage/pgadmin4
+
+Run this at http://localhost:5050 in your browser.
+
+When you run pgAdmin4, you need the ip address of your container to connect to:
+
+    docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' postgres
+
+
+
 

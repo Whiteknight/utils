@@ -34,7 +34,7 @@ dotnet sonarscanner end -d:sonar.login=$SONARQUBE_CASTIRON_KEY
 
 echo Cleaning Up
 rm coverage.xml
-docker-compose down -v
+#docker-compose down -v
 
 # Go back to the sonarqube project dir
 pg sonarqube
