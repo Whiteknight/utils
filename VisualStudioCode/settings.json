@@ -1,6 +1,31 @@
 {
     "workbench.colorTheme": "Solarized Dark",
+    "extensions.ignoreRecommendations": false,
     "files.associations": {
         "*.vssettings": "xml"
-    }
+    },
+    "editor.rulers": [
+        80,
+        100
+    ],
+    "editor.tokenColorCustomizations": {
+        "[Solarized Dark]": {
+            "types": "#b58900",
+            "functions": "#93a1a1",
+            "variables": "#93a1a1",
+        }
+    },
+    "mssql.connections": [
+        {
+            "server": "{{put-server-name-here}}",
+            "database": "{{put-database-name-here}}",
+            "user": "{{put-username-here}}",
+            "password": ""
+        }
+    ],
+    "security.workspace.trust.untrustedFiles": "open",
+    "css.format.braceStyle": "expand",
+    "window.restoreWindows": "none",
+    "files.hotExit": "off",
+    "java.autobuild.enabled": false
 }
