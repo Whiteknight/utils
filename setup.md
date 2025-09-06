@@ -18,7 +18,8 @@ Steps listed so I don't forget anything
    9.  Install jq
    10. Install 7zip
    11. Install git/bash
-   12. Install nuget (dotnet nuget doesn't have all the features)
+   12. Install bat
+   13. Install nuget (dotnet nuget doesn't have all the features)
 4. Setup Git/Bash (can probably install with choco)
    1. Clone this utils repo
    2. Copy over ~/.bashrc
